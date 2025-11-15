@@ -1,0 +1,203 @@
+/* =========================================================
+   BulletByte Technologies — Global Stylesheet
+   ========================================================= */
+
+/* ---------- Root Colors ---------- */
+:root {
+  --primary: #000000;
+  --secondary: #005C99;
+  --accent: #9D2315;
+  --light: #FFFFFF;
+  --dark: #000000;
+  --text-dark: #000000;
+}
+
+/* ---------- Base Settings ---------- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 18px;
+  background-color: #fff;
+}
+
+/* ---------- Navigation ---------- */
+.navbar {
+  background-color: var(--primary);
+  padding: 0.9rem 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #fff !important;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fff !important;
+}
+
+/* ---------- Hero Sections ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 5rem 1rem;
+}
+
+.hero h1,
+.hero .display-4,
+.hero .display-5 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.7rem;
+  opacity: 0.95;
+}
+
+/* ---------- Section Titles ---------- */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 3px solid var(--secondary);
+  display: inline-block;
+  margin-bottom: 1.4rem;
+}
+
+/* ---------- Cards ---------- */
+.service-card,
+.package-card,
+.testimonial-card,
+.contact-info {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+  padding: 1.8rem;
+}
+
+.service-card:hover,
+.package-card:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}
+
+.service-icon {
+  font-size: 2.6rem;
+  color: var(--secondary);
+}
+
+.price-tag {
+  background-color: #f2f2f2;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0.3rem 0 1rem 0;
+}
+
+/* ---------- Testimonials ---------- */
+.testimonial-text {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.7rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 3rem 0 1.5rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 1.05rem;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+/* ---------- Back to Top Button ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--accent);
+  color: #fff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+}
+
+/* ---------- Contact Form ---------- */
+form label {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+form input,
+form select,
+form textarea {
+  font-size: 1.05rem !important;
+  padding: 0.65rem !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  background-color: var(--secondary) !important;
+  border-color: var(--secondary) !important;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.btn-primary:hover {
+  background-color: #2385c7 !important;
+}
+
+/* ---------- Mobile Adjustments ---------- */
+@media (max-width: 768px) {
+  .hero h1,
+  .hero .display-4,
+  .hero .display-5 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+  }
+
+  body {
+    font-size: 17px;
+  }
+}
+
+/* ---------- DO NOT MODIFY: Packages Table Styling (kept exactly) ---------- */
+/* The packages table + mobile view have their own embedded CSS in the HTML.
+   This external stylesheet intentionally does NOT override them.
+*/
