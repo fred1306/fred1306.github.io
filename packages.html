@@ -389,11 +389,13 @@
 <body id="top">
 
   <!-- NAVIGATION -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="bi bi-cpu"></i> BulletByte Technologies
-      </a>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img 
+        src="assets/img/BB.png"  alt="BulletByte Technologies Logo"  class="img-fluid" style="height: 60px; width: auto;" >
+      <span class="fw-semibold">BulletByte Technologies</span>
+    </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
               data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" 
@@ -436,7 +438,7 @@
   </section>
 
   <!-- PACKAGES SECTION -->
-  <main class="py-5">
+  <main role="main" class="py-5">
     <div class="container">
       <h2 class="section-title text-center">Compare IT Support Plans</h2>
       <p class="lead text-center mb-5">
@@ -456,8 +458,8 @@
               <div class="package-price text-center">$89<span class="fs-6">/month</span></div>
               <p class="text-center"><strong>Ideal for home users or individuals who need occasional help.</strong></p>
               <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success"></i> A cost-effective entry plan for essential maintenance and troubleshooting.</li>
-                <li><i class="bi bi-check text-success"></i> Includes one scheduled on-site visit per month, plus remote assistance for small fixes or quick guidance.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> A cost-effective entry plan for essential maintenance and troubleshooting.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes one scheduled on-site visit per month, plus remote assistance for small fixes or quick guidance.</li>
                
               </ul>
               <div class="text-center mt-4">
@@ -483,8 +485,8 @@
               <div class="package-price text-center">$149<span class="fs-6">/month</span></div>
               <p class="text-center"><strong>Ideal for small offices with multiple devices.</strong></p>
               <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success"></i> A balanced plan combining on-site and remote support for up to two visits per month. </li>
-                <li><i class="bi bi-check text-success"></i> Covers virus removal, data backup, network setup, and patch management to keep your systems stable and secure.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> A balanced plan combining on-site and remote support for up to two visits per month. </li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Covers virus removal, data backup, network setup, and patch management to keep your systems stable and secure.</li>
                 
               </ul>
               <div class="text-center mt-4">
@@ -510,8 +512,8 @@
               <div class="package-price text-center">$279<span class="fs-6">/month</span></div>
               <p class="text-center"><strong>Ideal for growing businesses or clients managing multiple devices.</strong></p>
               <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success"></i> A proactive plan offering faster response, monthly maintenance, and priority scheduling. </li>
-                <li><i class="bi bi-check text-success"></i> Includes IT documentation and ongoing preventive health checks to ensure optimal performance across your systems.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> A proactive plan offering faster response, monthly maintenance, and priority scheduling. </li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes IT documentation and ongoing preventive health checks to ensure optimal performance across your systems.</li>
                 
               </ul>
               <div class="text-center mt-4">
@@ -537,8 +539,8 @@
               <div class="package-price text-center">$449<span class="fs-6">/month</span></div>
               <p class="text-center"><strong>Ideal for multi-site offices or clients requiring maximum uptime.</strong></p>
               <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success"></i> Our highest-tier plan delivers priority scheduling, proactive monitoring, and up to five monthly on-site visits. </li>
-                <li><i class="bi bi-check text-success"></i> Designed for clients who value consistent reliability and professional documentation of all IT assets.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Our highest-tier plan delivers priority scheduling, proactive monitoring, and up to five monthly on-site visits. </li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Designed for clients who value consistent reliability and professional documentation of all IT assets.</li>
                 
               </ul>
               <div class="text-center mt-4">
@@ -564,7 +566,7 @@
         </div>
         <div class="text-center">
           <button class="contact-btn" onclick="showConfirmationDialog()">
-            <i class="bi bi-whatsapp"></i> Contact Us via WhatsApp
+            <i class="bi bi-whatsapp" aria-hidden="true"></i> Contact Us via WhatsApp
           </button>
         </div>
       </section>
@@ -900,12 +902,12 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="mt-5">
+  <footer role="contentinfo" class="mt-5">
     <div class="container">
 
       <div class="row">
         <div class="col-md-6 mb-4">
-          <h2 class="h4"><i class="bi bi-cpu"></i> BulletByte Technologies</h2>
+          <h2 class="h4"><i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies</h2>
           <p>Mobile IT support for homes and small businesses in Covina and surrounding areas.</p>
         </div>
 
@@ -933,7 +935,7 @@
 
   <!-- BACK TO TOP -->
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="bi bi-arrow-up"></i>
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
   </a>
 
   <!-- JS -->
@@ -1013,10 +1015,9 @@
   </script>
   
   
-<!-- Elfsight Accessibility | Untitled Accessibility -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-f0a4b1a2-441d-4314-859f-eeb29f3684ba" data-elfsight-app-lazy></div>
 
+
+<script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
 
 </body>
 </html>

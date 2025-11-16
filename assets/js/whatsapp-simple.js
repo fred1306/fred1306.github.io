@@ -17,7 +17,7 @@ function addWhatsAppButton() {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 20px;
+            bottom: 100px;
             right: 20px;
             background: #25D366;
             border-radius: 50%;

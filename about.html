@@ -20,11 +20,13 @@
 <body id="top">
 
   <!-- NAVIGATION -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="bi bi-cpu"></i> BulletByte Technologies
-      </a>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img 
+        src="assets/img/BB.png"  alt="BulletByte Technologies Logo"  class="img-fluid" style="height: 60px; width: auto;" >
+      <span class="fw-semibold">BulletByte Technologies</span>
+    </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
               data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" 
@@ -56,7 +58,7 @@
   </header>
 
   <!-- MAIN CONTENT -->
-  <main class="py-5">
+  <main role="main" class="py-5">
     <div class="container">
 
       <!-- Who We Are -->
@@ -85,28 +87,28 @@
 
           <div class="col-md-6">
             <div class="service-card h-100">
-              <h3 class="h4"><i class="bi bi-lightning-charge text-primary"></i> Fast Response</h3>
+              <h3 class="h4"><i class="bi bi-lightning-charge text-primary" aria-hidden="true"></i> Fast Response</h3>
               <p class="mt-2">We understand how disruptive tech problems can be. We work quickly and efficiently to get you back on track.</p>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="service-card h-100">
-              <h3 class="h4"><i class="bi bi-shield-lock text-primary"></i> Security First</h3>
+              <h3 class="h4"><i class="bi bi-shield-lock text-primary" aria-hidden="true"></i> Security First</h3>
               <p class="mt-2">Your files, privacy, and data are treated with the highest level of respect and care.</p>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="service-card h-100">
-              <h3 class="h4"><i class="bi bi-chat-left-quote text-primary"></i> Clear Communication</h3>
+              <h3 class="h4"><i class="bi bi-chat-left-quote text-primary" aria-hidden="true"></i> Clear Communication</h3>
               <p class="mt-2">We explain what happened, how we fix it, and how you can prevent it — in plain English.</p>
             </div>
           </div>
 
           <div class="col-md-6">
             <div class="service-card h-100">
-              <h3 class="h4"><i class="bi bi-cash text-primary"></i> Fair Pricing</h3>
+              <h3 class="h4"><i class="bi bi-cash text-primary" aria-hidden="true"></i> Fair Pricing</h3>
               <p class="mt-2">Transparent pricing with no hidden fees. What we quote is what you pay.</p>
             </div>
           </div>
@@ -137,12 +139,12 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-5">
+  <footer role="contentinfo" class="mt-5">
     <div class="container">
 
       <div class="row">
         <div class="col-md-6 mb-4">
-          <h2 class="h4"><i class="bi bi-cpu"></i> BulletByte Technologies</h2>
+          <h2 class="h4"><i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies</h2>
           <p>Mobile IT support for homes and small businesses in Covina and surrounding areas.</p>
         </div>
 
@@ -153,7 +155,14 @@
           <a href="packages.html">Packages</a><br>
           <a href="contact.html">Contact</a>
         </div>
-
+		
+		<div class="col-md-3 mb-4">
+        <h4 class="h5">Connect With Us</h4>
+        <a href="https://wa.me/16266009012"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</a><br />
+        <a href="https://www.instagram.com/bulletbyte"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a>
+      </div>
+	  
+	  
         <div class="col-md-3 mb-4">
           <h3 class="h5">Legal</h3>
           <a href="privacy.html">Privacy Policy</a><br>
@@ -169,7 +178,7 @@
   </footer>
 
   <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to Top">
-    <i class="bi bi-arrow-up"></i>
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
   </a>
 
   <!-- JS -->
