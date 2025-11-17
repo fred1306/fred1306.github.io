@@ -75,7 +75,7 @@ body {
 /* ---------- Cards ---------- */
 .service-card,
 .package-card,
-.testimonial-card,
+.tips-card,
 .contact-info {
   background: #fff;
   border-radius: 12px;
@@ -104,12 +104,12 @@ body {
 }
 
 /* ---------- Testimonials ---------- */
-.testimonial-text {
+.tips-text {
   font-size: 1.2rem;
   font-style: italic;
 }
 
-.testimonial-author {
+.tips-author {
   font-weight: 600;
   color: var(--primary);
   margin-top: 0.7rem;
@@ -213,7 +213,7 @@ form textarea {
   font-size: 26px;
 }
 
-/* Increase size of testimonial author names */
+/* Increase size of tips */
 .fade-card h6 {
   font-size: 1.5rem !important;   /* default is 1rem */
   font-weight: 600;               /* optional: make it bolder */
@@ -229,11 +229,7 @@ form textarea {
   transform: translateX(-20px);
 }
 
-/* Increase star size inside testimonials 
-.testimonial-stars {
-  font-size: 1.6rem !important;   
-  line-height: 1;
-} */
+
 
 
 .testimonial-stars {
