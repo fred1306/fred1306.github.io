@@ -236,3 +236,95 @@ form textarea {
   font-size: 1.8rem;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
 }
+
+
+
+/* =========================================================
+   Tips Page — Professional Styling
+   ========================================================= */
+
+/* Fade Box for Animated Tip */
+#fadeTip {
+  background: #0d1117;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #1f2937;
+  min-height: 150px;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  color: #ffffff !important;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+/* Fade Animations */
+#fadeTip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#fadeTip.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* NEXT TIP BUTTON */
+#nextTip,
+.next-tip-btn {
+  border: 1px solid #00e0ff !important;
+  color: #00e0ff !important;
+  padding: 10px 24px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  background: transparent;
+  transition: 0.3s ease;
+}
+
+#nextTip:hover,
+.next-tip-btn:hover {
+  background: #00e0ff !important;
+  color: #000 !important;
+}
+
+/* Search Bar */
+#tipSearch {
+  background: #0d1117;
+  border: 1px solid #1f2937;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+#tipSearch::placeholder {
+  color: #9ca3af;
+}
+
+/* Tip Grid Cards */
+.tip-card {
+  background: #111827 !important;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.3s ease;
+  height: 100%;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  border-color: #00e0ff;
+}
+
+/* Tip text */
+.tip-card p {
+  color: #ffffff !important;
+  font-size: 1.1rem;
+}
+
+/* Tip author */
+.tip-card h6 {
+  color: #00e0ff !important;
+  font-weight: 600;
+  margin-top: 12px;
+  font-size: 1.1rem;
+}

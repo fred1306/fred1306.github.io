@@ -39,24 +39,27 @@ function startTipRotation() {
 
   if (!box) return;
 
-  // Screen readers announce updates
+  // Screen reader live updates
   box.setAttribute("aria-live", "polite");
 
+  // Shuffle tips
   let list = [...tips].sort(() => Math.random() - 0.5);
   let index = 0;
 
   function rotate() {
     const t = list[index];
 
+    // Fade out
     box.classList.remove("show");
     box.classList.add("hide");
 
     setTimeout(() => {
       box.innerHTML = `
         <p style="color:#ffffff;">"${t.text}"</p>
-        <h6 class="mt-3" style="color:#00e0ff;"> - ${t.author}</h6>
+        <p class="mt-3" style="color:#00e0ff; font-weight:bold;">- ${t.author}</p>
       `;
 
+      // Fade in
       box.classList.remove("hide");
       box.classList.add("show");
     }, 500);
@@ -64,17 +67,15 @@ function startTipRotation() {
     index = (index + 1) % list.length;
   }
 
-  // Start autoplay
+  // Auto start
   rotate();
   tipRotationInterval = setInterval(rotate, 6000);
 
-  // NEXT TIP BUTTON
+  // Next Tip Button
   if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      rotate(); // Instant next tip
-    });
+    nextBtn.addEventListener("click", rotate);
 
-    // Keyboard ADA support
+    // Keyboard support
     nextBtn.addEventListener("keydown", (e) => {
       if (e.key === " " || e.key === "Enter") {
         e.preventDefault();
@@ -91,18 +92,53 @@ function renderAllTips() {
   const container = document.getElementById("allTips");
   if (!container) return;
 
+  container.innerHTML = "";
+
   tips.forEach(t => {
     container.innerHTML += `
-      <div class="col-md-4">
+      <div class="col-md-4 mb-4">
         <div class="tip-card"
              role="article"
              aria-label="Technical tip card"
              style="background:#111827; padding:20px; border-radius:12px; border:1px solid #1f2937;">
           <p style="color:#ffffff;">"${t.text}"</p>
-          <h6 class="mt-3" style="color:#00e0ff;"> - ${t.author}</h6>
+          <h6 class="mt-3" style="color:#00e0ff;">- ${t.author}</h6>
         </div>
       </div>
     `;
+  });
+}
+
+// ------------------------------------------------------
+// SEARCH FUNCTION
+// ------------------------------------------------------
+function setupTipSearch() {
+  const searchInput = document.getElementById("tipSearch");
+  const container = document.getElementById("allTips");
+  if (!searchInput || !container) return;
+
+  searchInput.addEventListener("input", () => {
+    const q = searchInput.value.toLowerCase();
+    container.innerHTML = "";
+
+    tips
+      .filter(t =>
+        t.text.toLowerCase().includes(q) ||
+        t.author.toLowerCase().includes(q)
+      )
+      .forEach(t => {
+        container.innerHTML += `
+          <div class="col-md-4 mb-4">
+            <div class="tip-card"
+                 role="article"
+                 aria-label="Technical tip card"
+                 style="background:#111827; padding:20px; border-radius:12px; border:1px solid #1f2937;">
+              <p style="color:#ffffff;">"${t.text}"</p>
+              <h6 class="mt-3" style="color:#00e0ff;">- ${t.author}</h6>
+            </div>
+          </div>
+        `;
+      });
   });
 }
 
@@ -112,4 +148,5 @@ function renderAllTips() {
 document.addEventListener("DOMContentLoaded", () => {
   startTipRotation();
   renderAllTips();
+  setupTipSearch();
 });
