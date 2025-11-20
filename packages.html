@@ -24,15 +24,14 @@
   <!-- NAVIGATION -->
   <nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
         <img src="assets/img/BB.png" alt="BulletByte Technologies Logo" class="img-fluid" style="height: 60px; width: auto;">
         <span class="fw-semibold">BulletByte Technologies</span>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
-        aria-label="Toggle navigation">
+              data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -42,321 +41,6 @@
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="packages.html">Packages</a></li>
-          <li class="nav-item"><a class="nav-link" href="tips.html">Technical Tips</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header class="hero text-white text-center" aria-labelledby="packages-title">
-    <div class="container">
-      <h1 id="packages-title" class="display-4 fw-bold">Monthly IT Support Packages</h1>
-      <p class="fs-4 mt-3">
-        Flexible, affordable support for homes and small businesses across the San Gabriel Valley.
-      </p>
-    </div>
-  </header>
-
-  <!-- SERVICE AREA SECTION -->
-  <section class="py-4 bg-light" aria-labelledby="service-area-title">
-    <div class="container text-center">
-      <h2 id="service-area-title" class="section-title">Serving the San Gabriel Valley</h2>
-      <p class="mt-3 lead">
-        Covina • Glendora • San Dimas • Azusa • Diamond Bar • Walnut • Claremont • Upland •
-        Monrovia • Duarte • Baldwin Park • & Nearby Cities
-      </p>
-    </div>
-  </section>
-
-  <!-- PACKAGES SECTION -->
-  <main role="main" class="py-5">
-    <div class="container">
-
-      <h2 class="section-title text-center">Compare IT Support Plans</h2>
-      <p class="lead text-center mb-5">
-        Simplify your IT management with flexible monthly packages. All plans include priority scheduling and discounts on additional services.
-      </p>
-
-      <!-- ===== PACKAGE CARDS ===== -->
-      <div class="row">
-
-        <!-- Basic Support -->
-        <div class="col-md-6 col-lg-3 mb-4">
-          <div class="card package-card h-100">
-            <div class="card-header text-center">
-              <h3 class="h4">Basic Support</h3>
-              <p>1 On-Site Visit</p>
-            </div>
-
-            <div class="card-body">
-              <div class="package-price text-center">
-                $89<span class="fs-6">/month</span>
-              </div>
-
-              <p class="text-center">
-                <strong>Ideal for home users or individuals who need occasional help.</strong>
-              </p>
-
-              <ul class="list-unstyled">
-                <li>
-                  <i class="bi bi-check text-success" aria-hidden="true"></i>
-                  A cost-effective entry plan for essential maintenance and troubleshooting.
-                </li>
-                <li>
-                  <i class="bi bi-check text-success" aria-hidden="true"></i>
-                  Includes one scheduled on-site visit per month, plus remote assistance for small fixes or quick guidance.
-                </li>
-              </ul>
-
-              <div class="text-center mt-4">
-                <button type="button" class="select-package-btn" onclick="selectPackage('basic')">
-                  Select Basic
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Standard Support -->
-        <div class="col-md-6 col-lg-3 mb-4">
-          <div class="card package-card h-100">
-            <div class="card-header text-center">
-              <h3 class="h4">Standard Support</h3>
-              <p>2 On-Site Visits</p>
-            </div>
-
-            <div class="card-body">
-              <div class="package-price text-center">
-                $149<span class="fs-6">/month</span>
-              </div>
-
-              <p class="text-center">
-                <strong>Ideal for small offices with multiple devices.</strong>
-              </p>
-
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> A balanced plan combining on-site and remote support for up to two visits per month.</li>
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Covers virus removal, data backup, network setup, and patch management.</li>
-              </ul>
-
-              <div class="text-center mt-4">
-                <button type="button" class="select-package-btn" onclick="selectPackage('standard')">
-                  Select Standard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Premium Support -->
-        <div class="col-md-6 col-lg-3 mb-4">
-          <div class="card package-card h-100 featured">
-            <div class="card-header text-center">
-              <h3 class="h4">Premium Support</h3>
-              <p>3 On-Site Visits</p>
-            </div>
-
-            <div class="card-body">
-              <div class="package-price text-center">
-                $279<span class="fs-6">/month</span>
-              </div>
-
-              <p class="text-center">
-                <strong>Ideal for growing businesses or clients managing multiple devices.</strong>
-              </p>
-
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> A proactive plan offering faster response, monthly maintenance, and priority scheduling.</li>
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes IT documentation and preventive health checks for optimal performance.</li>
-              </ul>
-
-              <div class="text-center mt-4">
-                <button type="button" class="select-package-btn" onclick="selectPackage('premium')">
-                  Select Premium
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Business Elite -->
-        <div class="col-md-6 col-lg-3 mb-4">
-          <div class="card package-card h-100">
-            <div class="card-header text-center">
-              <h3 class="h4">Business Elite</h3>
-              <p>5 On-Site Visits</p>
-            </div>
-
-            <div class="card-body">
-              <div class="package-price text-center">
-                $449<span class="fs-6">/month</span>
-              </div>
-
-              <p class="text-center"><strong>Ideal for multi-site offices or clients requiring maximum uptime.</strong></p>
-
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Priority scheduling, proactive monitoring, and up to five monthly on-site visits.</li>
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Designed for clients requiring consistent reliability and professional documentation.</li>
-              </ul>
-
-              <div class="text-center mt-4">
-                <button type="button" class="select-package-btn" onclick="selectPackage('elite')">
-                  Select Elite
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- End row -->
-
-      <!-- ===== SELECTED PACKAGE SECTION ===== -->
-      <section id="selected-package-section" aria-labelledby="selected-package-heading">
-        <h3 id="selected-package-heading" class="text-center">Your Selected Package</h3>
-
-        <div id="selected-package-details" class="text-center">
-          <p>You have selected: <span id="selected-package-name" class="selected-package-name fw-bold text-primary">None</span></p>
-          <p id="selected-package-price"></p>
-          <p id="selected-package-hours"></p>
-        </div>
-
-        <div class="text-center">
-          <button class="contact-btn" onclick="showConfirmationDialog()">
-            <i class="bi bi-whatsapp" aria-hidden="true"></i> Contact Us via WhatsApp
-          </button>
-        </div>
-      </section>
-
-      <!-- ===== DESKTOP COMPARISON TABLE ===== -->
-      <div class="desktop-view">
-        <div class="package-compare-wrapper">
-
-          <h3 class="section-title text-center">Compare All Package Features</h3>
-
-          <div class="table-responsive">
-            <table class="packages-compare-table" aria-label="Comparison of IT support packages">
-              <caption class="pb-2 text-center">
-                * Feature breakdown to help you pick the right plan
-              </caption>
-
-              <thead>
-                <tr>
-                  <th scope="col"><span class="fs-4">Service / Feature</span></th>
-                  <th scope="col">Basic Support<br>$89 / month</th>
-                  <th scope="col">Standard Support<br>$149 / month</th>
-                  <th scope="col">Premium Support<br>$279 / month</th>
-                  <th scope="col">Business Elite<br>$449 / month</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <th scope="row">System Cleanup & Optimization</th>
-                  <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Virus & Malware Removal</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Data Backup & Recovery</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Software Installation & Configuration</th>
-                  <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Operating System Installation / Reinstallation</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Network Setup & Configuration</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Wi-Fi & Connectivity Troubleshooting</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">Printer & Scanner Setup</th>
-                  <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Service Packages | BulletByte Technologies | Monthly IT Support Plans</title>
-
-  <meta name="description" content="Flexible monthly IT support packages for homes and small businesses in Covina and surrounding areas. Choose from Basic, Standard, Premium, and Business Elite plans with on-site visits." />
-  <link rel="canonical" href="https://www.bulletbyte.co/packages.html" />
-
-  <!-- Bootstrap & Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Site CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/packages.css" />
-</head>
-
-<body id="top" class="packages-body">
-
-  <!-- NAVIGATION -->
-  <nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="assets/img/BB.png" alt="BulletByte Technologies Logo" class="img-fluid" style="height: 60px; width: auto;">
-        <span class="fw-semibold">BulletByte Technologies</span>
-      </a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" 
-              aria-label="Toggle Navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="packages.html">Packages</a></li>     
           <li class="nav-item"><a class="nav-link" href="tips.html">Technical Tips</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
@@ -399,13 +83,16 @@
         <div class="col-md-6 col-lg-3 mb-4">
           <div class="card package-card h-100">
             <div class="card-header text-center">
-              <!-- h4 -> h3 for proper heading order -->
               <h3 class="h4">Basic Support</h3>
               <p>1 On-Site Visit</p>
             </div>
             <div class="card-body">
-              <div class="package-price text-center">$89<span class="fs-6">/month</span></div>
-              <p class="text-center"><strong>Ideal for home users or individuals who need occasional help.</strong></p>
+              <div class="package-price text-center">
+                $89<span class="fs-6">/month</span>
+              </div>
+              <p class="text-center">
+                <strong>Ideal for home users or individuals who need occasional help.</strong>
+              </p>
               <ul class="list-unstyled">
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> A cost-effective entry plan for essential maintenance and troubleshooting.</li>
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes one scheduled on-site visit per month, plus remote assistance for small fixes or quick guidance.</li>
@@ -427,11 +114,15 @@
               <p>2 On-Site Visits</p>
             </div>
             <div class="card-body">
-              <div class="package-price text-center">$149<span class="fs-6">/month</span></div>
-              <p class="text-center"><strong>Ideal for small offices with multiple devices.</strong></p>
+              <div class="package-price text-center">
+                $149<span class="fs-6">/month</span>
+              </div>
+              <p class="text-center">
+                <strong>Ideal for small offices with multiple devices.</strong>
+              </p>
               <ul class="list-unstyled">
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> A balanced plan combining on-site and remote support for up to two visits per month.</li>
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Covers virus removal, data backup, network setup, and patch management to keep your systems stable and secure.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Covers security, backups, and network setup to keep your systems stable and secure.</li>
               </ul>
               <div class="text-center mt-4">
                 <button type="button" class="select-package-btn" onclick="selectPackage('standard')">
@@ -450,11 +141,15 @@
               <p>3 On-Site Visits</p>
             </div>
             <div class="card-body">
-              <div class="package-price text-center">$279<span class="fs-6">/month</span></div>
-              <p class="text-center"><strong>Ideal for growing businesses or clients managing multiple devices.</strong></p>
+              <div class="package-price text-center">
+                $279<span class="fs-6">/month</span>
+              </div>
+              <p class="text-center">
+                <strong>Ideal for growing businesses or clients managing multiple devices.</strong>
+              </p>
               <ul class="list-unstyled">
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> A proactive plan offering faster response, monthly maintenance, and priority scheduling.</li>
-                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes IT documentation and ongoing preventive health checks to ensure optimal performance across your systems.</li>
+                <li><i class="bi bi-check text-success" aria-hidden="true"></i> Includes IT documentation and ongoing preventive health checks for optimal performance.</li>
               </ul>
               <div class="text-center mt-4">
                 <button type="button" class="select-package-btn" onclick="selectPackage('premium')">
@@ -473,8 +168,12 @@
               <p>5 On-Site Visits</p>
             </div>
             <div class="card-body">
-              <div class="package-price text-center">$449<span class="fs-6">/month</span></div>
-              <p class="text-center"><strong>Ideal for multi-site offices or clients requiring maximum uptime.</strong></p>
+              <div class="package-price text-center">
+                $449<span class="fs-6">/month</span>
+              </div>
+              <p class="text-center">
+                <strong>Ideal for multi-site offices or clients requiring maximum uptime.</strong>
+              </p>
               <ul class="list-unstyled">
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> Our highest-tier plan delivers priority scheduling, proactive monitoring, and up to five monthly on-site visits.</li>
                 <li><i class="bi bi-check text-success" aria-hidden="true"></i> Designed for clients who value consistent reliability and professional documentation of all IT assets.</li>
@@ -508,15 +207,15 @@
       <div class="desktop-view">
         <div class="package-compare-wrapper">
           <h3 class="section-title text-center">Compare All Package Features</h3>
-          
+
           <div class="table-responsive">
             <table class="packages-compare-table" aria-label="Comparison of IT support packages">
               <caption class="pb-2 text-center">
-                * Feature breakdown to help you pick the right plan
+                Feature breakdown to help you pick the right plan.
               </caption>
               <thead>
                 <tr>
-                  <th scope="col"><font size="6">Service / Feature</font></th>
+                  <th scope="col"><span class="fs-4">Service / Feature</span></th>
                   <th scope="col">Basic Support<br>$89 / month</th>
                   <th scope="col">Standard Support<br>$149 / month</th>
                   <th scope="col">Premium Support<br>$279 / month</th>
@@ -524,34 +223,24 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Flat list of 15 services, in the exact order you provided -->
+
                 <tr>
-                  <th scope="row">System Cleanup & Optimization</th>
+                  <th scope="row">System Cleanup &amp; Optimization</th>
                   <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Virus & Malware Removal</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Data Backup & Recovery</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Software Installation & Configuration</th>
+                  <th scope="row">Software Installation &amp; Configuration</th>
                   <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
                   <th scope="row">Operating System Installation / Reinstallation</th>
                   <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
@@ -559,41 +248,71 @@
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Network Setup & Configuration</th>
+                  <th scope="row">Virus &amp; Malware Removal</th>
                   <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Wi-Fi & Connectivity Troubleshooting</th>
+                  <th scope="row">Data Backup &amp; Recovery</th>
                   <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Printer & Scanner Setup</th>
+                  <th scope="row">Security &amp; Patch Management</th>
+                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Network Setup &amp; Configuration</th>
+                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Wi-Fi &amp; Connectivity Troubleshooting</th>
+                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">IoT &amp; Smart Device Integration</th>
+                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Printer &amp; Scanner Setup</th>
                   <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Device & File Sharing Setup</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
+                  <th scope="row">Hardware Diagnostics &amp; Upgrade Consultation</th>
+                  <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
-                <tr>
-                  <th scope="row">IoT & Smart Device Integration</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
+
                 <tr>
                   <th scope="row">Remote Troubleshooting</th>
                   <td data-label="Basic Support"><span class="check-mark">✓ Included</span></td>
@@ -601,27 +320,32 @@
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">New Office / Device Setup</th>
-                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
-                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
-                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Email & Cloud Account Setup</th>
+                  <th scope="row">Email &amp; Cloud Account Setup</th>
                   <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
                   <td data-label="Standard Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
                 <tr>
-                  <th scope="row">Maintenance Plan & PC Health Report</th>
+                  <th scope="row">Preventive Maintenance &amp; Health Checks</th>
                   <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
                   <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
                   <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
                   <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
                 </tr>
+
+                <tr>
+                  <th scope="row">IT Documentation &amp; Consultation</th>
+                  <td data-label="Basic Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Standard Support"><span class="x-mark">✗ Not included</span></td>
+                  <td data-label="Premium Support"><span class="check-mark">✓ Included</span></td>
+                  <td data-label="Business Elite"><span class="check-mark">✓ Included</span></td>
+                </tr>
+
+                <!-- Plan Details -->
                 <tr>
                   <th scope="row">Priority Response Time</th>
                   <td data-label="Basic Support">24–48 Hours</td>
@@ -633,8 +357,8 @@
                   <th scope="row">Support Type</th>
                   <td data-label="Basic Support">On-Site Only</td>
                   <td data-label="Standard Support">On-Site + Limited Remote</td>
-                  <td data-label="Premium Support">Full On-Site & Remote</td>
-                  <td data-label="Business Elite">Full On-Site, Remote & Proactive Monitoring</td>
+                  <td data-label="Premium Support">Full On-Site &amp; Remote</td>
+                  <td data-label="Business Elite">On-Site, Remote &amp; Proactive Monitoring</td>
                 </tr>
                 <tr>
                   <th scope="row">Included On-Site Visits</th>
@@ -676,6 +400,7 @@
               </tbody>
             </table>
           </div>
+
           <p class="text-center mt-3">
             <small>Automatic payments available via Square. Cancel anytime.</small>
           </p>
@@ -697,96 +422,116 @@
         <div id="basic-panel" class="tab-panel" role="tabpanel" aria-labelledby="basic-tab" aria-hidden="false">
           <div class="feature"><span>Price</span><span>$89/month</span></div>
           <div class="feature"><span>Included On-Site Visits</span><span>1 Visit</span></div>
-          <div class="feature"><span>System Cleanup & Optimization</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Software Installation & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Printer & Scanner Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Virus & Malware Removal</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Data Backup & Recovery</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Operating System Installation</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Network Setup & Configuration</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Wi-Fi Troubleshooting</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Device & File Sharing Setup</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>IoT & Smart Device Integration</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>New Office / Device Setup</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Email & Cloud Account Setup</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Maintenance Plan & PC Health Report</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Best For</span><span>Home Users</span></div>
           <div class="feature"><span>Priority Response Time</span><span>24–48 Hours</span></div>
           <div class="feature"><span>Support Type</span><span>On-Site Only</span></div>
-          <div class="feature"><span>Best For</span><span>Home Users</span></div>
-          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('basic')">Select Basic Package</button>
+
+          <div class="feature"><span>System Cleanup &amp; Optimization</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Software Installation &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Operating System Installation / Reinstallation</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Virus &amp; Malware Removal</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Data Backup &amp; Recovery</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Security &amp; Patch Management</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Network Setup &amp; Configuration</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Wi-Fi &amp; Connectivity Troubleshooting</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>IoT &amp; Smart Device Integration</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Printer &amp; Scanner Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Hardware Diagnostics &amp; Upgrade Consultation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Email &amp; Cloud Account Setup</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Preventive Maintenance &amp; Health Checks</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>IT Documentation &amp; Consultation</span><span class="x-mark">✗ Not included</span></div>
+
+          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('basic')">
+            Select Basic Package
+          </button>
         </div>
 
         <!-- Standard Panel -->
         <div id="standard-panel" class="tab-panel" role="tabpanel" aria-labelledby="standard-tab" aria-hidden="true">
           <div class="feature"><span>Price</span><span>$149/month</span></div>
           <div class="feature"><span>Included On-Site Visits</span><span>2 Visits</span></div>
-          <div class="feature"><span>System Cleanup & Optimization</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Virus & Malware Removal</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Data Backup & Recovery</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Software Installation & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Operating System Installation</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Network Setup & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Wi-Fi Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Printer & Scanner Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Email & Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Device & File Sharing Setup</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>IoT & Smart Device Integration</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>New Office / Device Setup</span><span class="x-mark">✗ Not included</span></div>
-          <div class="feature"><span>Maintenance Plan & PC Health Report</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Best For</span><span>Small Offices</span></div>
           <div class="feature"><span>Priority Response Time</span><span>24 Hours</span></div>
           <div class="feature"><span>Support Type</span><span>On-Site + Limited Remote</span></div>
-          <div class="feature"><span>Best For</span><span>Small Offices</span></div>
-          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('standard')">Select Standard Package</button>
+
+          <div class="feature"><span>System Cleanup &amp; Optimization</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Software Installation &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Operating System Installation / Reinstallation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Virus &amp; Malware Removal</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Data Backup &amp; Recovery</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Security &amp; Patch Management</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Network Setup &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Wi-Fi &amp; Connectivity Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>IoT &amp; Smart Device Integration</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>Printer &amp; Scanner Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Hardware Diagnostics &amp; Upgrade Consultation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Email &amp; Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Preventive Maintenance &amp; Health Checks</span><span class="x-mark">✗ Not included</span></div>
+          <div class="feature"><span>IT Documentation &amp; Consultation</span><span class="x-mark">✗ Not included</span></div>
+
+          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('standard')">
+            Select Standard Package
+          </button>
         </div>
 
         <!-- Premium Panel -->
         <div id="premium-panel" class="tab-panel" role="tabpanel" aria-labelledby="premium-tab" aria-hidden="true">
           <div class="feature"><span>Price</span><span>$279/month</span></div>
           <div class="feature"><span>Included On-Site Visits</span><span>3 Visits</span></div>
-          <div class="feature"><span>System Cleanup & Optimization</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Virus & Malware Removal</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Data Backup & Recovery</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Software Installation & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Operating System Installation</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Network Setup & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Wi-Fi Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Printer & Scanner Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Device & File Sharing Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>IoT & Smart Device Integration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>New Office / Device Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Email & Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Maintenance Plan & PC Health Report</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Priority Response Time</span><span>8 Hours</span></div>
-          <div class="feature"><span>Support Type</span><span>Full On-Site & Remote</span></div>
           <div class="feature"><span>Best For</span><span>Growing Businesses</span></div>
-          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('premium')">Select Premium Package</button>
+          <div class="feature"><span>Priority Response Time</span><span>8 Hours</span></div>
+          <div class="feature"><span>Support Type</span><span>Full On-Site &amp; Remote</span></div>
+
+          <div class="feature"><span>System Cleanup &amp; Optimization</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Software Installation &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Operating System Installation / Reinstallation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Virus &amp; Malware Removal</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Data Backup &amp; Recovery</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Security &amp; Patch Management</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Network Setup &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Wi-Fi &amp; Connectivity Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>IoT &amp; Smart Device Integration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Printer &amp; Scanner Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Hardware Diagnostics &amp; Upgrade Consultation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Email &amp; Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Preventive Maintenance &amp; Health Checks</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>IT Documentation &amp; Consultation</span><span class="check-mark">✓ Included</span></div>
+
+          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('premium')">
+            Select Premium Package
+          </button>
         </div>
 
         <!-- Business Elite Panel -->
         <div id="elite-panel" class="tab-panel" role="tabpanel" aria-labelledby="elite-tab" aria-hidden="true">
           <div class="feature"><span>Price</span><span>$449/month</span></div>
           <div class="feature"><span>Included On-Site Visits</span><span>5 Visits</span></div>
-          <div class="feature"><span>System Cleanup & Optimization</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Virus & Malware Removal</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Data Backup & Recovery</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Software Installation & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Operating System Installation</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Network Setup & Configuration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Wi-Fi Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Printer & Scanner Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Device & File Sharing Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>IoT & Smart Device Integration</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>New Office / Device Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Email & Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
-          <div class="feature"><span>Maintenance Plan & PC Health Report</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Best For</span><span>Multi-Location Offices</span></div>
           <div class="feature"><span>Priority Response Time</span><span>1–2 Hours</span></div>
-          <div class="feature"><span>Support Type</span><span>Full On-Site, Remote & Proactive Monitoring</span></div>
-          <div class="feature"><span>Best For</span><span>Multi-Device / Multi-Location Offices</span></div>
-          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('elite')">Select Business Elite Package</button>
+          <div class="feature"><span>Support Type</span><span>On-Site, Remote &amp; Proactive Monitoring</span></div>
+
+          <div class="feature"><span>System Cleanup &amp; Optimization</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Software Installation &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Operating System Installation / Reinstallation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Virus &amp; Malware Removal</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Data Backup &amp; Recovery</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Security &amp; Patch Management</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Network Setup &amp; Configuration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Wi-Fi &amp; Connectivity Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>IoT &amp; Smart Device Integration</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Printer &amp; Scanner Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Hardware Diagnostics &amp; Upgrade Consultation</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Remote Troubleshooting</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Email &amp; Cloud Account Setup</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>Preventive Maintenance &amp; Health Checks</span><span class="check-mark">✓ Included</span></div>
+          <div class="feature"><span>IT Documentation &amp; Consultation</span><span class="check-mark">✓ Included</span></div>
+
+          <button type="button" class="select-package-btn w-100 mt-3" onclick="selectPackage('elite')">
+            Select Business Elite Package
+          </button>
         </div>
       </div>
 
@@ -795,7 +540,10 @@
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="dialog-content">
             <h3 id="dialog-title">Contact via WhatsApp</h3>
-            <p id="dialog-description">You'll be redirected to WhatsApp to discuss the <span id="dialog-package-name" class="fw-bold"></span> package.</p>
+            <p id="dialog-description">
+              You'll be redirected to WhatsApp to discuss the
+              <span id="dialog-package-name" class="fw-bold"></span> package.
+            </p>
             <p>Would you like to proceed?</p>
             <div class="dialog-buttons">
               <button class="dialog-btn confirm-btn" onclick="redirectToWhatsApp()">OK</button>
@@ -816,9 +564,9 @@
         Choose the package that fits your needs or contact us for a custom solution.
       </p>
       <a href="contact.html" class="btn btn-primary btn-lg"
-			style="font-size:19px; color:#FFFFFF; background-color:#09222F;">
-			Book a Consultation
-	</a>
+         style="font-size:19px; color:#FFFFFF; background-color:#09222F;">
+        Book a Consultation
+      </a>
     </div>
   </section>
 
@@ -827,7 +575,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 mb-4">
-          <h2 class="h4"><i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies</h2>
+          <h2 class="h4">
+            <i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies
+          </h2>
           <p>Mobile IT support for homes and small businesses in Covina and surrounding areas.</p>
         </div>
 
@@ -838,14 +588,20 @@
           <a href="packages.html">Packages</a><br>
           <a href="contact.html">Contact</a>
         </div>
-        
+
         <div class="col-md-3 mb-4">
           <h4 class="h5">Connect With Us</h4>
-          <a href="https://wa.me/16266009012"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</a><br />
-          <a href="https://www.instagram.com/bulletbyte"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a><br />
-          <a href="https://yelp.to/Kur0TOoIHC"><i class="fa-brands fa-yelp" aria-hidden="true"></i> Find us on Yelp!</a>
+          <a href="https://wa.me/16266009012">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp
+          </a><br />
+          <a href="https://www.instagram.com/bulletbyte">
+            <i class="bi bi-instagram" aria-hidden="true"></i> Instagram
+          </a><br />
+          <a href="https://yelp.to/Kur0TOoIHC">
+            <i class="fa-brands fa-yelp" aria-hidden="true"></i> Find us on Yelp!
+          </a>
         </div>
-        
+
         <div class="col-md-3 mb-4">
           <h3 class="h5">Legal</h3>
           <a href="privacy.html">Privacy Policy</a><br>
@@ -869,7 +625,7 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/packages.js"></script>
 
-  <!-- Accessibility widget (kept as you requested) -->
+  <!-- Accessibility widget -->
   <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
 </body>
 </html>
