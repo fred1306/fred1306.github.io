@@ -113,6 +113,40 @@ function initializeMobileTabs() {
 
 // Initialize package page functionality
 document.addEventListener('DOMContentLoaded', function() {
+	
     // Initialize mobile tabs
     initializeMobileTabs();
 });
+
+// *********************************************************************************
+
+
+// TEXT MESSAGE DIALOG FUNCTIONS
+function showTextDialog() {
+    const name = document.getElementById('selected-package-name').textContent;
+    
+    if (!name || name === "None") {
+        alert("Please select a package first.");
+        return;
+    }
+
+    document.getElementById("dialog-package-name-text").textContent = name;
+    document.getElementById("text-dialog").style.display = "block";
+}
+
+function hideTextDialog() {
+    document.getElementById("text-dialog").style.display = "none";
+}
+
+function redirectToSMS() {
+    const name = document.getElementById("selected-package-name").textContent;
+    const price = document.getElementById("selected-package-price").textContent;
+    const hours = document.getElementById("selected-package-hours").textContent;
+
+    const message = encodeURIComponent(
+        `Hello! I'm interested in the ${name} package.\n${price}\n${hours}\n\nPlease provide more information.`
+    );
+
+    window.location.href = `sms:16266009012?&body=${message}`;
+    hideTextDialog();
+}

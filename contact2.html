@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Contact & Book a Visit | BulletByte Technologies | Covina IT Support</title>
+
+  <meta name="description" content="Contact BulletByte Technologies for fast, mobile IT support in Covina, Glendora, San Dimas, Diamond Bar, Azusa, Walnut, and surrounding cities. Book on-site or remote tech support." />
+  <link rel="canonical" href="https://www.bulletbyte.co/contact.html" />
+
+  <!-- Bootstrap & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body id="top">
+
+  <!-- NAVIGATION -->
+  <nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/img/BB.png" alt="BulletByte Technologies Logo" class="img-fluid" style="height: 60px; width: auto;">
+        <span class="fw-semibold">BulletByte Technologies</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
+              aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="tips.html">Technical Tips</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero text-white text-center" aria-labelledby="contact-title">
+    <div class="container">
+      <h1 id="contact-title" class="display-4 fw-bold">Let's Fix Your Tech — Book a Visit</h1>
+      <p class="fs-4 mt-3">
+        Fast on-site and remote IT support for homes and small businesses.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main role="main" class="py-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- CONTACT INFO -->
+        <section class="col-lg-5" aria-labelledby="contact-info-title">
+          <h2 id="contact-info-title" class="section-title">Contact Information</h2>
+
+          <p class="fs-5">
+            <i class="bi bi-geo-alt-fill contact-icon" aria-hidden="true"></i>
+            <strong>Service Area:</strong><br />
+            Covina, Glendora, San Dimas, Diamond Bar, Azusa, Walnut, Claremont,
+            Upland, Monrovia, Duarte, Baldwin Park & nearby cities.
+          </p>
+
+          <p class="fs-5">
+            <i class="bi bi-telephone-fill contact-icon" aria-hidden="true"></i>
+            <strong>Phone / Text:</strong><br />
+            <a href="tel:16266009012">(626) 600-9012</a>
+          </p>
+
+          <p class="fs-5">
+            <i class="bi bi-whatsapp contact-icon" aria-hidden="true"></i>
+            <strong>WhatsApp:</strong><br />
+            <a href="https://wa.me/16266009012" target="_blank" rel="noopener">
+              Message us on WhatsApp
+            </a>
+          </p>
+
+          <p class="fs-5">
+            <i class="bi bi-envelope-fill contact-icon" aria-hidden="true"></i>
+            <strong>Email:</strong><br />
+            <a href="mailto:info@bulletbyte.co">info@bulletbyte.co</a>
+          </p>
+
+          <p class="fs-5">
+            <i class="bi bi-clock-fill contact-icon" aria-hidden="true"></i>
+            <strong>Hours:</strong><br />
+            Monday – Saturday • 10:00 AM – 7:00 PM
+          </p>
+
+          <div class="alert alert-warning mt-4 fs-6 bg-info text-dark">
+            <strong>No-Show Policy:</strong>  
+            If a technician arrives and the client is unavailable or more than 15 minutes late,  
+            a <strong>$30 no-show fee</strong> may apply (see Terms of Service for details).
+          </div>
+        </section>
+
+       <form id="bookingForm">
+  <label>Name</label>
+  <input type="text" id="name" required>
+
+  <label>Phone</label>
+  <input type="text" id="phone" required>
+
+  <label>Email</label>
+  <input type="email" id="email" required>
+
+  <label>Service Needed</label>
+  <select id="service" required>
+    <option value="">Select a service</option>
+    <option>System Cleanup & Optimization</option>
+    <option>Software Installation</option>
+    <option>OS Install / Reinstall</option>
+    <option>Virus & Malware Removal</option>
+    <option>Data Backup & Recovery</option>
+    <option>Network Setup</option>
+    <option>Wi-Fi Troubleshooting</option>
+    <option>IoT / Smart Device</option>
+    <option>Printer Setup</option>
+    <option>Business IT Support</option>
+  </select>
+
+  <label>Preferred Date</label>
+  <input type="date" id="date" required>
+
+  <label>Describe the issue</label>
+  <textarea id="message" rows="4" required></textarea>
+
+  <button type="submit">Book Free Consultation</button>
+</form>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const service = document.getElementById("service").value;
+    const date = document.getElementById("date").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappNumber = "16266009012"; // YOUR NUMBER
+
+    const text =
+      "📅 NEW BOOKING REQUEST\n\n" +
+      "👤 Name: " + name + "\n" +
+      "📱 Phone: " + phone + "\n" +
+      "✉ Email: " + email + "\n" +
+      "🛠 Service: " + service + "\n" +
+      "📆 Preferred Date: " + date + "\n" +
+      "💬 Issue:\n" + message;
+
+    const url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text);
+
+    window.location.href = url;
+});
+</script>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo" class="mt-5">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h2 class="h4"><i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies</h2>
+          <p>Mobile IT support for homes and small businesses in Covina and surrounding areas.</p>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <h3 class="h5">Quick Links</h3>
+          <a href="index.html">Home</a><br>
+          <a href="services.html">Services</a><br>
+          <a href="packages.html">Packages</a><br>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <!-- Fix incorrect h4 level -->
+          <h3 class="h5">Connect With Us</h3>
+          <a href="https://wa.me/16266009012"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</a><br />
+          <a href="https://www.instagram.com/bulletbyte"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a><br />
+          <a href="https://yelp.to/Kur0TOoIHC"><i class="fa-brands fa-yelp" aria-hidden="true"></i> Find us on Yelp!</a>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <h3 class="h5">Legal</h3>
+          <a href="privacy.html">Privacy Policy</a><br>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+
+      <hr class="my-4" style="border-color: rgba(255,255,255,0.2);" />
+
+      <p class="text-center mb-0">&copy; 2025 BulletByte Technologies. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+  </a>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- Accessibility Widget -->
+  <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+
+</body>
+</html>

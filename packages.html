@@ -197,9 +197,17 @@
           <p id="selected-package-hours"></p>
         </div>
         <div class="text-center">
-          <button class="contact-btn" onclick="showConfirmationDialog()">
+          <button class="contact-btn whatsapp" onclick="showConfirmationDialog()">
             <i class="bi bi-whatsapp" aria-hidden="true"></i> Contact Us via WhatsApp
           </button>
+		<button class="contact-btn textbtn" onclick="showTextDialog()">
+    <i class="bi bi-chat-dots"></i> Text Us
+</button>
+
+
+
+
+		  
         </div>
       </section>
 
@@ -535,7 +543,7 @@
         </div>
       </div>
 
-      <!-- Custom Confirmation Dialog -->
+      <!-- Custom Confirmation Dialog for WhatsApp-->
       <div id="confirmation-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby="dialog-description">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="dialog-content">
@@ -552,6 +560,26 @@
           </div>
         </div>
       </div>
+	  
+	  <!-- Custom Confirmation Dialog for Text -->
+<div id="text-dialog" role="dialog" aria-modal="true" class="dialog-overlay">
+  <div class="d-flex justify-content-center align-items-center h-100">
+    <div class="dialog-content">
+      <h3>Contact via Text Message</h3>
+      <p>
+        You'll send a text message about the
+        <span id="dialog-package-name-text" class="fw-bold"></span> package.
+      </p>
+      <p>Would you like to proceed?</p>
+
+      <div class="dialog-buttons">
+        <button class="dialog-btn confirm-btn" onclick="redirectToSMS()">OK</button>
+        <button class="dialog-btn cancel-btn" type="button" onclick="hideTextDialog()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     </div>
   </main>
