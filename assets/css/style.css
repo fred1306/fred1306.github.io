@@ -440,3 +440,20 @@ form textarea {
   background-color: #ffffff;
   color: #0d1117;
 }
+
+
+/* adding space between buttons */
+
+@media (max-width: 768px) {
+  .contact-buttons,
+  .contact-btn {
+    width: 100%;
+	
+  }
+
+  .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;   /* spacing between buttons */
+  }
+}
