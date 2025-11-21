@@ -457,3 +457,61 @@ form textarea {
     gap: 16px;   /* spacing between buttons */
   }
 }
+
+
+
+/* High-contrast primary button */
+.btn-primary,
+.btn-primary:visited {
+  color: #FFFFFF;
+  background-color: #09222F;   /* dark blue for strong contrast */
+  border-color: #09222F;
+}
+
+/* Hover / active */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #04131E;
+  border-color: #04131E;
+}
+
+/* Visible keyboard focus */
+.btn-primary:focus-visible {
+  outline: 3px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+/* Keep large font size without inline style */
+.book-btn {
+  font-size: 19px;
+}
+
+
+/* Tabs – high contrast + visible focus */
+.tab-button {
+  background-color: #09222F;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border-radius: 999px; /* pill style, optional */
+  cursor: pointer;
+}
+
+/* Selected tab state */
+.tab-button[aria-selected="true"] {
+  background-color: #FFFFFF;
+  color: #09222F;
+}
+
+/* Hover */
+.tab-button:hover {
+  filter: brightness(1.1);
+}
+
+/* Keyboard focus */
+.tab-button:focus-visible {
+  outline: 3px solid #FFD54A;  /* strong visible focus */
+  outline-offset: 3px;
+}
