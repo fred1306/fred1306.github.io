@@ -343,3 +343,24 @@ footer a:hover {
   background-color: #2980b9;
   color: white;
 }
+
+
+.tab-button {
+  background-color: #09222F;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.tab-button[aria-selected="true"] {
+  background-color: #FFFFFF;
+  color: #09222F;
+}
+
+.tab-button:focus-visible {
+  outline: 3px solid #FFD54A;
+  outline-offset: 3px;
+}

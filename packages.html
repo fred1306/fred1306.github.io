@@ -200,14 +200,9 @@
           <button class="contact-btn whatsapp" onclick="showConfirmationDialog()">
             <i class="bi bi-whatsapp" aria-hidden="true"></i> Contact Us via WhatsApp
           </button>
-		<button class="contact-btn textbtn" onclick="showTextDialog()">
-    <i class="bi bi-chat-dots"></i> Text Us
-</button>
-
-
-
-
-		  
+          <button class="contact-btn textbtn" onclick="showTextDialog()">
+            <i class="bi bi-chat-dots"></i> Text Us
+          </button>
         </div>
       </section>
 
@@ -420,15 +415,10 @@
         <h2 class="h4 mb-3 text-center">BulletByte IT Support Packages</h2>
 
         <div class="tabs" role="tablist" aria-label="IT Support Packages">
-          <button  class="tab-button"  id="basic-tab"  type="button"  role="tab"  aria-selected="true"
-			aria-controls="basic-panel">  Basic Support</button>
-			<button  class="tab-button"  id="basic-tab"  type="button"  role="tab"  aria-selected="true"
-			aria-controls="basic-panel">  Standard Support</button>
-			<button  class="tab-button"  id="basic-tab"  type="button"  role="tab"  aria-selected="true"
-			aria-controls="basic-panel">  Premium Support</button>
-			<button  class="tab-button"  id="basic-tab"  type="button"  role="tab"  aria-selected="true"
-			aria-controls="basic-panel">  Business Elite</button>
-          
+          <button class="tab-button" type="button" role="tab" aria-selected="true" aria-controls="basic-panel" id="basic-tab">Basic Support</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="standard-panel" id="standard-tab">Standard Support</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="premium-panel" id="premium-tab">Premium Support</button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" aria-controls="elite-panel" id="elite-tab">Business Elite</button>
         </div>
 
         <!-- Basic Panel -->
@@ -565,26 +555,25 @@
           </div>
         </div>
       </div>
-	  
-	  <!-- Custom Confirmation Dialog for Text -->
-<div id="text-dialog" role="dialog" aria-modal="true" class="dialog-overlay">
-  <div class="d-flex justify-content-center align-items-center h-100">
-    <div class="dialog-content">
-      <h3>Contact via Text Message</h3>
-      <p>
-        You'll send a text message about the
-        <span id="dialog-package-name-text" class="fw-bold"></span> package.
-      </p>
-      <p>Would you like to proceed?</p>
 
-      <div class="dialog-buttons">
-        <button class="dialog-btn confirm-btn" onclick="redirectToSMS()">OK</button>
-        <button class="dialog-btn cancel-btn" type="button" onclick="hideTextDialog()">Cancel</button>
+      <!-- Custom Confirmation Dialog for Text -->
+      <div id="text-dialog" role="dialog" aria-modal="true" class="dialog-overlay">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="dialog-content">
+            <h3>Contact via Text Message</h3>
+            <p>
+              You'll send a text message about the
+              <span id="dialog-package-name-text" class="fw-bold"></span> package.
+            </p>
+            <p>Would you like to proceed?</p>
+
+            <div class="dialog-buttons">
+              <button class="dialog-btn confirm-btn" onclick="redirectToSMS()">OK</button>
+              <button class="dialog-btn cancel-btn" type="button" onclick="hideTextDialog()">Cancel</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
 
     </div>
   </main>
@@ -596,9 +585,10 @@
       <p class="fs-5 mt-2">
         Choose the package that fits your needs or contact us for a custom solution.
       </p>
+      <!-- cleaned CTA button: no inline styles -->
       <a href="contact.html" class="btn btn-primary btn-lg book-btn" data-asw-org-font-size="19">
-		Book a Consultation
-		</a>
+        Book a Consultation
+      </a>
     </div>
   </section>
 
