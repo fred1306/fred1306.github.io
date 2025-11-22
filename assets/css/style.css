@@ -520,3 +520,9 @@ form textarea {
 .book-btn {
   font-size: 19px;
 }
+
+
+.btn-primary, .book-btn {
+  background-color: #1F5A8A !important;
+  color: #ffffff !important;
+}
