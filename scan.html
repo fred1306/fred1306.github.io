@@ -33,23 +33,27 @@
 
     header.scan-header {
       display: flex;
+      flex-direction: column;        /* stack logo above text */
       align-items: center;
-      gap: 0.9rem;
+      text-align: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .brand-logo {
-      flex: 0 0 auto;
-      width: 56px;
+      width: 100px;                  /* bigger logo */
       height: auto;
+      margin-bottom: 0.25rem;
     }
 
     .brand-text-group {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
     .brand-name {
-      font-size: 2rem;               /* increased for attention */
+      font-size: 2.1rem;             /* slightly larger for attention */
       font-weight: 700;
       letter-spacing: 0.04em;
       line-height: 1.2;
@@ -74,12 +78,14 @@
       font-weight: 700;
       margin-top: 1.4rem;
       margin-bottom: 0.65rem;
+      text-align: left;
     }
 
     .hero-sub {
       font-size: 1.05rem;
       color: #e2e2e2;
       margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     .btn-main,
@@ -189,7 +195,7 @@
 </head>
 <body>
   <main class="scan-card" role="main">
-    <header class="scan-header mb-2">
+    <header class="scan-header">
       <img src="/assets/img/logo.png"
            class="brand-logo"
            alt="BulletByte Technologies logo">
@@ -277,4 +283,3 @@
   </main>
 </body>
 </html>
-
