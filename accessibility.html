@@ -1,3 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Accessibility Statement | BulletByte Technologies</title>
+
+  <meta name="description" content="Accessibility statement for BulletByte Technologies. Learn how we work to keep our website and services usable and accessible for everyone." />
+  <link rel="canonical" href="https://www.bulletbyte.co/accessibility.html" />
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  
+  <link rel="icon" type="image/png" href="bb.png">
+  <link rel="shortcut icon" href="bb.ico">
+  <link rel="apple-touch-icon" href="bb.png">
+</head>
+
+<body id="top">
+
+<a class="visually-hidden-focusable" href="#main-content">
+  Skip to main content
+</a>
+
+<!-- NAVIGATION -->
+<nav role="navigation" aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+
+    <!-- LOGO + NAME -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+      <img 
+        src="assets/img/BB.png" 
+        alt="Glowing blue microchip icon with the letters BB in the center"
+        class="img-fluid"
+        style="height: 60px; width: auto;"
+      >
+      <span class="fw-semibold">BulletByte Technologies</span>
+    </a>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- NAV LINKS -->
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+        <li class="nav-item"><a class="nav-link" href="tips.html">Technical Tips</a></li>
+        <li class="nav-item"><a class="nav-link" href="enterprise.html">Enterprise</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- MAIN CONTENT WRAPPER -->
 <main role="main" id="main-content" tabindex="-1">
 
   <!-- PAGE HERO / HEADER -->
@@ -70,7 +138,7 @@
         For the best experience, we recommend using the latest version of a modern web browser.
       </p>
 
-      <h2 id="feedback-heading" class="h3 mt-4">Feedback &amp; Support</h2>
+      <h2 id="feedback-heading" class="h3 mt-4">Feedback & Support</h2>
       <p>
         Your feedback helps us improve. If you experience any difficulty using our website, encounter an accessibility
         barrier, or need information in another format, please contact us:
@@ -108,3 +176,61 @@
   </section>
 
 </main>
+
+<!-- FOOTER -->
+<footer role="contentinfo" class="mt-5">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <h2 class="h4"><i class="bi bi-cpu" aria-hidden="true"></i> BulletByte Technologies</h2>
+        <p>Mobile IT support for homes and small businesses in Covina and surrounding areas.</p>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h3 class="h5">Quick Links</h3>
+        <a href="index.html">Home</a><br>
+        <a href="services.html">Services</a><br>
+        <a href="packages.html">Packages</a><br>
+        <a href="tips.html">Technical Tips</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+      <div class="col-md-3 mb-4">
+        <h4 class="h5">Connect With Us</h4>
+        <a href="https://wa.me/16266009012"><i class="bi bi-whatsapp" aria-hidden="true"></i> WhatsApp</a><br />
+        <a href="https://www.instagram.com/bulletbyte"><i class="bi bi-instagram" aria-hidden="true"></i> Instagram</a><br />
+        <a href="https://yelp.to/Kur0TOoIHC"><i class="fa-brands fa-yelp" aria-hidden="true"></i> Find us on Yelp!</a><br/>
+        <a href="https://share.google/ISdi7IBszZp79Rpq8"><i class="fa-brands fa-google" aria-hidden="true"></i> Find us on Google!</a>
+      </div>
+      
+      <div class="col-md-3 mb-4">
+        <h3 class="h5">Legal</h3>
+        <a href="privacy.html">Privacy Policy</a><br>
+        <a href="terms.html">Terms of Service</a><br>
+        <a href="accessibility.html">Accessibility Statement</a>
+      </div>
+    </div>
+
+    <hr class="my-4" style="border-color: rgba(255,255,255,0.2);" />
+
+    <p class="text-center mb-0">&copy; 2025 BulletByte Technologies. All rights reserved.</p>
+
+  </div>
+</footer>
+
+<a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="bi bi-arrow-up" aria-hidden="true"></i>
+</a>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+ <!-- Accessibility Widget -->
+  <script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+
+
+
+</body>
+</html>
