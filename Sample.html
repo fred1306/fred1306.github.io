@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cars Collision Center -  Parts Catalog  ***SAMPlE *** </title>
+    <style>
+        /* ── Reset & Base ─────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background: #f0f4f8;
+            color: #1a2332;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        /* ── Container ────────────────────────────────────────────────── */
+        .app {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        /* ── Header ───────────────────────────────────────────────────── */
+        .header {
+            background: linear-gradient(145deg, #0b1a2e, #13273f);
+            color: #fff;
+            padding: 1.8rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.20);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .header-left .icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .header-left h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+        .header-left h1 small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            display: block;
+            margin-top: 2px;
+            letter-spacing: 0.3px;
+        }
+        .header-badge {
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+        }
+        .header-badge span {
+            color: #7fc9ff;
+        }
+
+        /* ── Controls ────────────────────────────────────────────────── */
+        .controls {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .controls .search-wrap {
+            flex: 2 1 260px;
+            position: relative;
+        }
+        .controls .search-wrap input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.6rem;
+            border: 1.5px solid #dce3ec;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            background: #f8fafc;
+            transition: border 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .controls .search-wrap input:focus {
+            border-color: #1a5c9e;
+            box-shadow: 0 0 0 3px rgba(26, 92, 158, 0.15);
+            background: #fff;
+        }
+        .controls .search-wrap .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7a8ba3;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+        .controls .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            flex: 3 1 400px;
+        }
+        .controls .filters select {
+            padding: 0.6rem 2rem 0.6rem 1rem;
+            border: 1.5px solid #dce3ec;
+            border-radius: 40px;
+            background: #f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6d86' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1rem center;
+            background-size: 12px;
+            appearance: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1a2332;
+            cursor: pointer;
+            min-width: 120px;
+            transition: border 0.2s;
+            outline: none;
+        }
+        .controls .filters select:focus {
+            border-color: #1a5c9e;
+            box-shadow: 0 0 0 3px rgba(26, 92, 158, 0.10);
+        }
+        .controls .stats {
+            font-size: 0.9rem;
+            color: #3d526b;
+            font-weight: 500;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+        .controls .stats strong {
+            color: #0b1a2e;
+        }
+
+        /* ── Table Wrap ───────────────────────────────────────────────── */
+        .table-wrap {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+        .table-scroll {
+            overflow-x: auto;
+            padding: 0 0.5rem 0.5rem 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 720px;
+        }
+        thead {
+            background: #f2f6fc;
+            border-bottom: 2px solid #dce3ec;
+        }
+        thead th {
+            padding: 0.9rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #2d4059;
+            position: sticky;
+            top: 0;
+            background: #f2f6fc;
+            z-index: 5;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+        thead th:hover {
+            background: #e6edf7;
+        }
+        thead th .sort-arrow {
+            display: inline-block;
+            margin-left: 4px;
+            font-size: 0.7rem;
+            opacity: 0.4;
+        }
+        thead th.active .sort-arrow {
+            opacity: 1;
+            color: #1a5c9e;
+        }
+        tbody tr {
+            border-bottom: 1px solid #eef2f7;
+            transition: background 0.12s;
+        }
+        tbody tr:hover {
+            background: #f6f9fe;
+        }
+        tbody td {
+            padding: 0.7rem 0.8rem;
+            vertical-align: middle;
+            line-height: 1.4;
+            color: #1e2c3e;
+        }
+        tbody td .brand-tag {
+            display: inline-block;
+            background: #e9edf4;
+            padding: 0.15rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1a3c5e;
+            letter-spacing: 0.2px;
+        }
+        tbody td .part-num {
+            font-weight: 600;
+            color: #0b1a2e;
+            font-size: 0.85rem;
+        }
+        tbody td .category {
+            font-size: 0.78rem;
+            background: #eef3fa;
+            padding: 0.15rem 0.6rem;
+            border-radius: 30px;
+            display: inline-block;
+            color: #1f3a57;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        tbody td .desc {
+            font-size: 0.85rem;
+            color: #1f2f42;
+            max-width: 320px;
+        }
+        tbody td .oem {
+            font-size: 0.78rem;
+            color: #4d6582;
+            font-family: 'SF Mono', 'Cascadia Code', monospace;
+            word-break: break-word;
+            max-width: 220px;
+        }
+        .no-results {
+            text-align: center;
+            padding: 3.5rem 1rem;
+            color: #6a7f99;
+            font-size: 1.05rem;
+        }
+        .no-results .emoji {
+            font-size: 2.4rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── Pagination ───────────────────────────────────────────────── */
+        .pagination-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem 1.2rem;
+            border-top: 1px solid #eef2f7;
+            gap: 0.8rem;
+        }
+        .pagination-wrap .info {
+            font-size: 0.85rem;
+            color: #3d526b;
+        }
+        .pagination-wrap .info strong {
+            color: #0b1a2e;
+        }
+        .pagination-wrap .pages {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .pagination-wrap .pages button {
+            padding: 0.35rem 0.9rem;
+            border: 1px solid #dce3ec;
+            background: #fff;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1a2332;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .pagination-wrap .pages button:hover:not(:disabled) {
+            background: #e9edf4;
+            border-color: #b8c6d8;
+        }
+        .pagination-wrap .pages button.active {
+            background: #1a5c9e;
+            border-color: #1a5c9e;
+            color: #fff;
+        }
+        .pagination-wrap .pages button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        /* ── Responsive ───────────────────────────────────────────────── */
+        @media (max-width: 820px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.2rem 1.2rem;
+            }
+            .header-badge {
+                align-self: flex-start;
+            }
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem 1.2rem;
+            }
+            .controls .stats {
+                margin-left: 0;
+                text-align: right;
+            }
+            .controls .filters {
+                flex-wrap: wrap;
+            }
+            .controls .filters select {
+                flex: 1 1 140px;
+                min-width: 100px;
+            }
+            .pagination-wrap {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .pagination-wrap .pages {
+                justify-content: center;
+            }
+            table {
+                font-size: 0.8rem;
+                min-width: 600px;
+            }
+            thead th,
+            tbody td {
+                padding: 0.5rem 0.6rem;
+            }
+            tbody td .desc {
+                max-width: 180px;
+            }
+            tbody td .oem {
+                max-width: 140px;
+                font-size: 0.7rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header-left h1 {
+                font-size: 1.2rem;
+            }
+            .header-left .icon {
+                font-size: 1.5rem;
+            }
+            .controls .search-wrap input {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem 0.6rem 2.4rem;
+            }
+            table {
+                font-size: 0.72rem;
+                min-width: 500px;
+            }
+            thead th,
+            tbody td {
+                padding: 0.4rem 0.4rem;
+            }
+            tbody td .desc {
+                max-width: 120px;
+            }
+            tbody td .oem {
+                max-width: 100px;
+                font-size: 0.65rem;
+            }
+            .pagination-wrap .pages button {
+                padding: 0.25rem 0.6rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app" id="app">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <span class="icon">🔧</span>
+                <div>
+                    <h1>
+                        Collision Center Parts
+                        <small>OEM Fasteners &amp; Retainers Catalog</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="header-badge">
+                📦 <span id="totalCount">0</span> parts · <span id="brandCount">0</span> brands
+            </div>
+        </header>
+
+        <!-- CONTROLS -->
+        <div class="controls">
+            <div class="search-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search by part #, description, or OEM..." />
+            </div>
+            <div class="filters">
+                <select id="brandFilter"><option value="">All Brands</option></select>
+                <select id="categoryFilter"><option value="">All Categories</option></select>
+                <span class="stats" id="resultStats"><strong>0</strong> results</span>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-wrap">
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="Brand" class="active">Brand <span class="sort-arrow">▲</span></th>
+                            <th data-sort="PartNumber">Part # <span class="sort-arrow">▲</span></th>
+                            <th data-sort="Category">Category <span class="sort-arrow">▲</span></th>
+                            <th data-sort="Description">Description <span class="sort-arrow">▲</span></th>
+                            <th data-sort="OEM">OEM Numbers <span class="sort-arrow">▲</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- rows rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-wrap">
+                <div class="info" id="paginationInfo">Showing <strong>0</strong> – <strong>0</strong> of <strong>0</strong></div>
+                <div class="pages" id="paginationButtons"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ────────────────────────────────────────────────────────────────
+        // 1.  RAW CSV DATA  (embedded as a template literal)
+        // ────────────────────────────────────────────────────────────────
+        const CSV_DATA = `Brand,Part Number,Category,Description,OEM Numbers
+        Volkswagen,13260PK,Retainers,"Splash Shield & Wheel Well Retainers, 5-2.12 x 19mm, T25 Drive, Black, 25 Pcs.","V.W. # N90892001, N90775001"
+        Volkswagen,10937PK,Retainers,"Splash Shield Retainers, 5mm Torx, 30mm Flange, Zinc, 25 Pcs.","V.W. # N90-796-502, N90-335-004"
+        Volkswagen,13256PK,Retainers,"Splash Shield Retaining Nuts, 5-2.12, 8mm Length, Zinc, 25 Pcs.","V.W. # N10327101, N10327102"
+        Volkswagen,13253PK,Retainers,"Skid Plate Retainers, 9/32"" (7mm) Hole, 20mm Stem, Slotted, 10 Pcs.",V.W. # 8D0-805-121B
+        Volkswagen,1655PK,Retainers,"Skid Plate Flatwashers, 8mm Bolt, 15.8mm OD, Zinc, 100 Pcs.",(Use with #13253 & 13254)
+        Volkswagen,13254PK,Retainers,"Skid Plate ""U"" Nuts, 6mm Stud, Zinc, 10 Pcs.",V.W. # 8D0805960
+        Volkswagen,12589PK,Retainers,"Skid Plate Screws, 6mm Stud, 25mm Head, Black Nylon, Slotted, 25 Pcs.",V.W. # 4A0-805-121A
+        Volkswagen,13255PK,Retainers,"Skid Plate Grommets, 6mm Stud, 20mm Width, Black Nylon, 25 Pcs.",V.W. # 4A0805163
+        Volkswagen,16991PK,Retainers,"Cowl Fasteners, 11/64"" Hole, 16mm Head, Phillips, Black, 10 Pcs.",V.W. # 8K0-805-121
+        Volkswagen,16990PK,Retainers,"Skid Plate ""U"" Nuts, 4.50mm Stud, Zinc, 15 Pcs.",Audi # 8K0-805-922A
+        Volkswagen,1297PK,Nuts Nylon,"Headlight Screw Grommets, #6 Screw, 13/32"" Head, Natural Nylon, 50 Pcs.","Chrysler # 6029501, G.M. # 1370853, V.W. # 179-813-883"
+        Volkswagen,1997PK,Nuts Nylon,"Tail Light Screw Grommets, #8 Screw, 13mm Head, Black Nylon, 25 Pcs.","G.M. # 3997391, V.W. # 179-813-881"
+        Volkswagen,10922PK,Nuts Nylon,"Plate Screw Grommets, #8 Screw, 10mm Stem, Natural Nylon, 15 Pcs.",V.W. # 1J0-853-120
+        Volkswagen,10918PK,Nuts Nylon,"Inner Fender Screw Grommets, #8 Screw, 11mm Stem, Black Nylon, 25 Pcs.",V.W. # 811-807-577C
+        Volkswagen,15308PK,Nuts Nylon,"Screw Grommets, #8 Screw, 13mm Stem, 11mm Head, Natural Nylon, 25 Pcs.",V.W. # 165-827-592
+        Volkswagen,12478PK,Nuts Nylon,"Fender Apron Screw Grommets, #8 Screw, 13mm Stem, Black Nylon, 15 Pcs.",V.W. # N908-338-01
+        Volkswagen,10943PK,Nuts Nylon,"Interior Frame Nuts, #8 Screw, 18mm Stem, 16mm Head, Black Nylon, 25 Pcs.",V.W. # 4A0-857-610
+        Volkswagen,10938PK,Nuts Nylon,"Screw Grommets, #8 Screw, 18.50mm Stem, Natural Nylon, 25 Pcs.",V.W. # 321-813-998A
+        Volkswagen,10926PK,Nuts Nylon,"Bumper & Fender Screw Grommets, #8 Screw, 20mm Stem, Black Nylon, 15 Pcs.",V.W. # N908-214-01
+        Volkswagen,12585PK,Nuts Nylon,"Screw Grommets, #10 Screw, 12.50mm Stem, Black Nylon, 25 Pcs.","Audi # 867-809-966, V.W. # 811-807-557-C"
+        Volkswagen,13322PK,Nuts Nylon,"Screw Grommets, #10 Screw, 15mm Stem, Black Nylon, 25 Pcs.",V.W. # 6N0-809-966A
+        Volkswagen,10942PK,Nuts Nylon,"Door Panel Screw Grommets, #10 Screw, 20mm Stem, Black Nylon, 15 Pcs.",V.W. # 357-827-998
+        Volkswagen,10959PK,Pin and Grommets,"Door Trim Panel Grommets, 5/16"" Hole, 6mm Pin, Natural Nylon, 50 Pcs.",V.W. # 3B0-867-334
+        Volkswagen,10958PK,Pin and Grommets,"Door Trim Panel Retainers, 6mm Pin, 16mm Stem, Natural Nylon, 25 Pcs.",V.W. # 3B0-867-333
+        Volkswagen,10934PK,Retainers Shield,"Shield Retainers, 15/64"" Hole, 16mm Stem, Black Nylon, 50 Pcs.",V.W. # 823-863-203
+        Volkswagen,9485PK,Retainers Door Panel,"Door Trim Panel Retainers, 9/32"" Hole, 15/16"" Head, Black Nylon, 25 Pcs.","Chrysler # 6032363, Ford # 385661-S, V.W. # N989022"
+        Volkswagen,15722PK,Retainers,"Hood Prop Rod Retainers, 9/32"" Hole, 8mm Rod, Black Nylon, 25 Pcs.",V.W. # 6N0-823-397-AC
+        Volkswagen,10944PK,Retainers,"Hood Insulation Retainers, 15/32"" Hole, 13mm Stem, Black Nylon, 15 Pcs.",V.W. # 1H5-863-849-01C
+        Volkswagen,10953PK,Retainers,"Hood Insulation Retainers, 15/32"" Hole, 13mm Stem, Black Nylon, 15 Pcs.",V.W. # 867-863-849-A01C
+        Volkswagen,12516PK,Clips Retaining,"Retaining Clips, 5/16"" Hole, 18mm Stem, Black Nylon, 25 Pcs.",V.W. # 801-867-299-01C
+        Volkswagen,10929PK,Retainers Weatherstrip,"Weatherstrip Retainers, 11/64"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",V.W. # 251-823-717
+        Volkswagen,10207PK,Retainers,"Splash Shield & Rocker Moulding Retainers, 5/16"" Hole, 8mm Hex, 15mm Head, Black Nylon, 25 Pcs.",V.W. # 3C0-853-934
+        Volkswagen,13243PK,Retainers,"Phillips Screw Retainers, 5/16"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",V.W. # 1H0-819-055-C01C
+        Volkswagen,9822PK,Retainers,"Front Bumper & Interior Trim Retainers, 23/64"" Hole, 11mm Stem, Gray Nylon, 25 Pcs.",V.W. # 701-867-299
+        Volkswagen,9154PK,Retainers,"Push Type Retainers, 23/64"" Square Hole, 13mm Stem, Black Nylon, 25 Pcs.",V.W. # 1H0-867-199-A
+        Volkswagen,10947PK,Retainers,"Door Panel Trim Retainers, 9/32"" Hole, 6mm Stem, Natural Nylon, 15 Pcs.",V.W. # 321-867-299B
+        Volkswagen,10935PK,Retainers,"Door Moulding Clips, 5.50mm Stud, 14mm Stem, White Nylon, 25 Pcs.",V.W. # 191-853-577A
+        Volkswagen,1024PK,Retainers,"Door Trim Panel Retainers, 9/32"" Hole, 18mm Stem, Natural Nylon, 25 Pcs.","AMC 4005470, Chrysler # 6003349, G.M. # 9685057, V.W. # N98905101"
+        Volkswagen,10916PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 10.50mm Stem, Black Nylon With Sealer, 25 Pcs.",V.W. # 6Q0-868-243
+        Volkswagen,10920PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 11mm Stem, Black Nylon With Sealer, 25 Pcs.",V.W. # 7L6-868-243
+        Volkswagen,10930PK,Retainers,"Interior Trim Retainers, 5/16"" Hole, 11mm Stem, 28mm Head, Natural & Black Nylon, 25 Pcs.",V.W. # 1H0-868-243
+        Volkswagen,10884PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 11mm Stem, White/Tan Nylon Double Ended, 15 Pcs.",V.W. # 1H0-868-243-B
+        Volkswagen,10933PK,Retainers,"Interior Trim Retainers, 5/16"" Hole, 12mm Stem, Natural/Black Nylon Double Ended, 25 Pcs.",V.W. # 6N0-868-243A
+        Volkswagen,12176PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 14mm Stem, Blue Nylon, 25 Pcs.",V.W. # 7L5-853-994
+        Volkswagen,10945PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 14mm Stem, Black Nylon, 25 Pcs.",Porsche # 823-867-299
+        Volkswagen,12615PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 14mm Stem, Black Nylon, 25 Pcs.",V.W. # 703-867-299
+        Volkswagen,10924PK,Retainers,"Door Trim Panel Retainers, 5/16"" Hole, 14.50mm Stem, Natural Nylon, 25 Pcs.",V.W. # 171-807-249A
+        Volkswagen,10921PK,Retainers Moulding,"Exterior Door Trim Moulding Retainers, 5/16"" Hole, 10mm Stem, 34.00 x 39.00mm Head, 10 Pcs.",V.W. # 1H0-853-585
+        Volkswagen,10925PK,Retainers Moulding,"Exterior Door Moulding Clips, 5/16"" Hole, 11mm Stem, White Nylon With Sealer, 10 Pcs.",V.W. # 1H0-853-585A
+        Volkswagen,10946PK,Retainers Moulding,"Exterior Door Trim Moulding Clips, 5/16"" Hole, 18mm Stem, 34.50 x 38.60mm Head, 10 Pcs.",V.W. # 1H0-853-585B
+        Volkswagen,15736PK,Retainers Moulding,"Door Trim & Scuff Plate Moulding Retainers, 5/16"" Hole, 19mm Stem, White Nylon, 25 Pcs.",V.W. # 191-853-577
+        Volkswagen,18806PK,Retainers Moulding,"Wheel Moulding Retainers, 23/64"" Hole, 9mm Stem, Black Nylon, 25 Pcs.",Volkswagen # 5J0-853-573
+        Volkswagen,12514PK,Retainers Moulding,"Moulding Clips, 23/64"" Hole, 13mm Stem, White Nylon With Green Rubber Grommet, 25 Pcs.",V.W. # 3A0-853-575-A
+        Volkswagen,12515PK,Retainers Moulding,"Moulding Clips, 23/64"" Hole, 21mm Stem, White Nylon With Green Rubber Grommet, 25 Pcs.",V.W. # 3B0-853-575
+        Toyota,1601PK,Nuts Nylon,"Fender Wheel Housing ""U"" Nuts, #10 Screw, Up to 1mm Panel, Black Nylon, 15 Pcs.","G.M. # 94841226, Mazda LA01-56-135, Toyota # 53879-14010-A"
+        Toyota,12494PK,Nuts Nylon,"""U"" Type Nuts, #10 Screw, Up to 3mm Panel, Black Nylon, 10 Pcs.",Toyota # 90179-05060
+        Toyota,11421PK,Nuts Nylon,"""U"" Type Nuts, #12 Screw, Up to 1.00mm Panel, Black Nylon, 10 Pcs.",Toyota # 90467-05114
+        Toyota,1606PK,Nuts Nylon,"Fender Wheel Housing ""U"" Type Nuts, #14 Screw, Up to 1.00mm Panel, Black Nylon, 15 Pcs.",Toyota # 53879-22010
+        Toyota,11388PK,Nuts Nylon,"Front Bumper ""U"" Type Nuts, #14 Screw, Up to 2mm Panel, Dark Red Nylon, 15 Pcs.","Toyota # 90467-A0018, 90467-05081"
+        Toyota,15083PK,Nuts Nylon,"Front Bumper & Fender Liner ""U"" Type Nuts, #14 Screw, Up to 3mm Panel, Black Nylon, 15 Pcs.",Toyota # 90467-05138
+        Toyota,16473PK,Nuts Nylon,"Screw Grommets, #6 Screw, 7mm Stem, 10mm Head, White Nylon, 25 Pcs.","Toyota # 81137-22530, 90075-10004"
+        Toyota,1978PK,Nuts Nylon,"Screw Grommets, #6 Screw, 8mm Stem, 12.00 x 16.00mm Head, Natural Nylon, 50 Pcs.","Isuzu # 8941340270, Toyota # 90189-05012"
+        Toyota,10745PK,Nuts Nylon,"Front Bumper Screw Grommets, #12 Screw, 9mm Stem, Black Nylon, 5 Pcs.","Toyota # 52535-50060, 52535-0E010"
+        Toyota,10794PK,Nuts Nylon,"Front Bumper Screw Grommets, #12 Screw, 10mm Stem, White Nylon, 5 Pcs.","Toyota # 90189-06193, 90189-06237"
+        Toyota,12073PK,Nuts Nylon,"Rocker & Floor Screw Grommets, #12 Screw, 10mm Stem, Black Nylon, 5 Pcs.",Toyota # 90189-06211
+        Toyota,10988PK,Nuts Nylon,"Fender Liner Screw Grommets, #12 Screw, 18mm Stem, Black Nylon, 5 Pcs.",Toyota # 90189-06214
+        Toyota,9912PK,Nuts Nylon,"Front & Rear Wheel Fender Liner Screw Grommets, #12 Screw, 19mm Stem, Black Nylon, 5 Pcs.",Toyota # 90189-06028
+        Toyota,15812PK,Nuts Nylon,"Screw Grommets, #12 Screw, 17mm Stem, 20mm Head, Black Nylon, 5 Pcs.",Toyota # 90189-A0002
+        Toyota,18164PK,Nuts Nylon,"Fender Liner Screw Grommets, #12 Screw, 17mm Stem, 20mm Flange, Black Nylon, 5 Pcs.",Toyota # 90189-06236
+        Toyota,16470PK,Nuts Nylon,"Rear Door Screw Grommets, #12 Screw, 17mm Stem, Natural Nylon With Sealer, 5 Pcs.","Hyundai # 86910-22000, Toyota # 90189-06029"
+        Toyota,11389PK,Nuts Nylon,"Hood & Fender Screw Grommets, #12 Screw, 18mm Stem, 20mm Head, Black Nylon, 5 Pcs.",Toyota # 90189-06065
+        Toyota,9913PK,Nuts Nylon,"Fender Liner Screw Grommets, #12 Screw, 22mm Stem, Black Nylon, 15 Pcs.",Toyota # 90189-06157
+        Toyota,12502PK,Nuts Nylon,"Rocker Moulding Screw Grommets, #12 Screw, 22mm Stem, Black Nylon, 15 Pcs.",Toyota # 90189-06177
+        Toyota,1608PK,Nuts Nylon,"Screw Grommets, #14 Screw, 16mm Stem, 18mm Head, White Nylon, 50 Pcs.",Toyota # 90189-06005
+        Toyota,1605PK,Nuts Nylon,"Screw Grommets, #14 Screw, 17mm Stem, 20mm Head, Black Nylon, 25 Pcs.","Toyota # 90189-06013, 96706-W100"
+        Toyota,13437PK,Nuts Nylon,"Bumper Side Bracket Screw Grommets, #14 Screw, 19mm Stem, Black Nylon, 15 Pcs.",Toyota # 52197-22020
+        Toyota,9079PK,Nuts Nylon,"Front Fender Screw Grommets, 23/64"" Hole, 15mm Stem, White Nylon, 15 Pcs.",Toyota # 90189-06114
+        Toyota,17086PK,Nuts Nylon,"Bumper Cover W/Sealer Screw Grommets, 23/64"" Square Hole, 17mm Stem, Yellow Nylon, 25 Pcs.",Toyota # 52188-33040
+        Toyota,9712PK,Nuts Nylon,"Park & Turn Signal Grommets, 7/16"" Hole, 9mm Stem, White Nylon, 50 Pcs.","Ford # N811169-S, G.M. #10423331, Toyota # 90075-10801"
+        Toyota,11395PK,Products Rubber,"Bumper Washers, 6.70mm ID, 20mm OD, Neoprene, 15 Pcs.",Toyota # 90430-06003
+        Toyota,15026PK,Retainers Shield,"Front Fender Retainers, 9/32"" Hole, 9mm Stem, Black Nylon With Sealer, 15 Pcs.",Toyota # 83857-47011
+        Toyota,12918PK,Retainers Shield,"Front Bumper Bracket Shield Retainers, 3/16"" Hole, 12mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-05125
+        Toyota,15002PK,Retainers Shield,"Luggage Compartment Shield Retainers, 15/64"" Hole, 16mm Stem, Black Nylon, 15 Pcs.",Toyota # 90467-06175
+        Toyota,12897PK,Retainers Shield,"Luggage Compartment Trim Retainer Clips, 1/4"" Hole, 16mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-08186
+        Toyota,18779PK,Retainers Shield,"Headliner Retainers, 13/64"" Hole, 15mm Stem, Tan Nylon, 25 Pcs.",Toyota # 90467-05164-E2
+        Toyota,18348PK,Retainers Shield,"Shield Retainers, 7/32"" Hole, 14.90mm Stem, Black Nylon, 50 Pcs.",Toyota # 90467-A0001-C1
+        Toyota,11021PK,Retainers Shield,"Bumper Cover Shield Retainers, 1/4"" Hole, 16mm Stem, Black Nylon, 50 Pcs.",Toyota # 90467-A0008
+        Toyota,18814PK,Retainers Shield,"Trim Panel Retainers, 13/64"" Hole, 14.90mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-05161-C0
+        Toyota,11979PK,Retainers Shield,"Fender Seal Retainers, 5/16"" Hole, 16mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-07208
+        Toyota,18799PK,Retainers Shield,"Trunk Side Trim Retainers, 9/32"" Hole, 16mm Stem, Black Nylon, 25 Pcs.","Toyota # 90467-A0002C4, 90467A0002C0"
+        Toyota,12074PK,Retainers Push Type,"Push Type Retainers, 23/64"" Hole, 15mm Stem, Black Nylon, 10 Pcs.",Toyota # 90467-09227
+        Toyota,11959PK,Retainers Push Type,"Front Fender Push Type Retainers, 23/64"" Hole, 27mm Stem, Black Nylon, 10 Pcs.",Toyota # 90467-09096
+        Toyota,9327PK,Retainers Push Type,"Rear Bumper Cover Push Type Retainers, 23/64"" Hole, 28mm Stem, Black Nylon, 4 Pcs.","G.M. # 94858560, Toyota # 52161-16010"
+        Toyota,18885PK,Retainers Push Type,"Front Grille Push Type Retainers, 11/32"" Hole, 28mm Stem, Black Nylon, 15 Pcs.","Toyota # 53384-68010, 53384-OR010"
+        Toyota,10628PK,Retainers Push Type,"Bumper Cover & Grille Push Type Retainers, 23/64"" Hole, 31mm Stem, Black Nylon, 15 Pcs.",Toyota # 52161-20010
+        Toyota,15144PK,Retainers Push Type,"Cowl Vent & Radiator Cover Retainers, 25/64"" Hole, 12mm Stem, Black Nylon, 10 Pcs.",Toyota # 90467-10170-C0
+        Toyota,17075PK,Retainers Push Type,"Fender Apron & Interior Trim Push Type Retainers, 25/64"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-10216
+        Toyota,13448PK,Retainers Push Type,"Fender Push Type Retainers, 33/64"" Hole, 14mm Stem, Black Nylon, 15 Pcs.","Toyota # 51453-0E010, 51453-48010"
+        Toyota,11145PK,Retainers Phillips Screw,"Front Bumper Phillips Screw Retainers, 13/64"" Hole, 8mm Stem, Black Nylon, 15 Pcs.",Toyota # 90467-05063-C0
+        Toyota,1603PK,Retainers Phillips Screw,"Phillips Screw Retainers, 9/32"" Hole, 12mm Stem, Black Nylon, 15 Pcs.","G.M. # 20426301, Mazda # 9926-50-625, Toyota # 90467-06017"
+        Toyota,12285PK,Retainers Phillips Screw,"Interior Trim Phillips Screw Retainers, 9/32"" Hole, 14mm Stem, Black Nylon, 10 Pcs.",Toyota # 90467-07190-B2
+        Toyota,12042PK,Retainers Phillips Screw,"Turn Signal Phillips Screw Retainers, 9/32"" Hole, 14mm Stem, Black Nylon, 10 Pcs.",Toyota # 90080-46294
+        Toyota,2163PK,Retainers Phillips Screw,"Phillips Screw Retainers, 5/16"" Hole, 21mm Stem, Black Nylon, 5 Pcs.","Acura # 90505-SL0-003, Chrysler # MB888869, G.M. # 9485236, Toyota # 90467-08155"
+        Toyota,10624PK,Retainers Phillips Screw,"Phillips Screw Retainers, 23/64"" Square Hole, 9mm Stem, Black Nylon, 15 Pcs.",Toyota # 90467-09166
+        Toyota,2027PK,Retainers Phillips Screw,"Bumper Cover Phillips Screw Retainers, 23/64"" Hole, 16mm Stem, Black Nylon, 15 Pcs.",Toyota # 90467-09145
+        Toyota,9646PK,Retainers Phillips Screw,"Bumper Cover Phillips Screw Retainers, 23/64"" Hole, 26mm Stem, Black Nylon, 10 Pcs.",Toyota # 90467-09127
+        Toyota,18759PK,Retainers Phillips Screw,"Phillips Screw Retainers, (12.50mm) Hole, 30mm Stem, Black Nylon, 10 Pcs.",Toyota # 52599-08010
+        Toyota,812PK,Clips Door Handle,"Door Window Crank Handle Retaining Clips, Bright Zinc Finish, 100 Pcs.","Toyota # 90520-01002, 90520-01274"
+        Toyota,15309PK,Clips Retaining,"Front & Rear Spoiler Locking Retainers, 16mm Width, Dacromet Finish, 15 Pcs.",Toyota # 76879-44010
+        Toyota,1585PK,Retainers Bumper,"Front Bumper Cushion Retaining Clips, 1"" Length, Black Nylon, 25 Pcs.","Toyota # 90183-03001, 90468-04038"
+        Toyota,1584PK,Retainers Bumper,"Bumper Strip Retainers, 27mm Length, Bright Zinc Finish, 25 Pcs.","Mitsubishi # MB325299, Toyota # 90468-04030"
+        Toyota,10109PK,Clips Door Rod End,"Door Rod End Clips, 5mm Rod, 7mm Hole, Left Hand Side, Yellow Nylon, 10 Pcs.","Toyota # 69293-33020, 69293-12040"
+        Toyota,10110PK,Clips Door Rod End,"Door Rod End Clips, 5mm Rod, 7mm Hole, Right Hand Side, Natural Nylon, 10 Pcs.","Toyota # 69293-33010, 69293-12030"
+        Toyota,10120PK,Clips Door Rod End,"Door Rod Clips, 5mm Rod, 8mm Hole, Universal, Natural Nylon, 10 Pcs.",Toyota # 69293-30030
+        Toyota,10117PK,Clips Door Rod End,"Door Rod End Clips, 5mm Rod, 8.50mm Hole, Left Hand Side, Yellow Nylon, 10 Pcs.",Toyota # 69293-12060
+        Toyota,10116PK,Clips Door Rod End,"Door Rod End Clips, 5mm Rod, 8.50mm Hole, Right Hand Side, Natural Nylon, 10 Pcs.",Toyota # 69293-12050
+        Toyota,9686PK,Retainers Door Trim Panel,"Scuff Plate Retainers, 5/16"" Hole, 10mm Stem, Red Nylon, 10 Pcs.",Toyota # 90467-11111
+        Toyota,13250PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 3/8"" Hole, 14mm Stem, Blue & Natural Nylon, 25 Pcs.",Toyota # 67771-22010
+        Toyota,18218PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 3/8"" Hole, 15mm Stem, White Nylon With Sealer, 15 Pcs.",Toyota # 90467-09206
+        Toyota,9263PK,Retainers Door Trim Panel,"Quarter Board & Inside Door Trim Panel Retainers, 25/64"" Hole, 11mm Stem, White Nylon, 15 Pcs.",Toyota # 67771-89104
+        Toyota,12854PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 25/64"" Hole, 14mm Stem, Gray Nylon, 50 Pcs.",Toyota # 67771-03030
+        Toyota,13249PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 7/16"" Hole, 14mm Stem, White Nylon, 15 Pcs.",Toyota # 67771-12070
+        Toyota,18163PK,Retainers Door Trim Panel,"Rear Door Bumper Retainers, 3/8"" Hole, Rubber & Nylon, 25 Pcs.",Toyota # 90541-09124
+        Toyota,10750PK,Clips Retaining,"Fender Flare Retainers, 23/64"" Hole, 10mm Stem, Yellow Nylon, 25 Pcs.","G.M. # 88969790, Toyota # 75867-21010"
+        Toyota,12484PK,Clips Retaining,"Scuff Plate Retainers, 21/64"" Hole, 12mm Stem, White Nylon, 15 Pcs.",Toyota # 90467-10162
+        Toyota,10635PK,Clips Retaining,"Rocker Panel & Scuff Plate Retainers, 23/64"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Toyota # 78867-AA010
+        Toyota,9092PK,Clips Retaining,"Dash & Fender Apron Seal Retainers, 5/16"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Toyota # 90467-10186
+        Toyota,15150PK,Clips Retaining,"Rear Light Housing Guide Clips, 23/64"" Hole, 10mm Stem, Yellow Nylon With Sealer, 10 Pcs.",Toyota # 81496-21010
+        Toyota,12901PK,Clips Retaining,"Rocker Panel Clips, 23/64"" Hole, 22mm Stem, Black Nylon, 15 Pcs.",Toyota # 75867-30110
+        Toyota,18810PK,Retainers Door Trim Panel,"Side Panel Retainers, 13.50 x 17.00mm Hole, 13mm Stem, White Nylon With Sealer, 25 Pcs.",Toyota # 76828-60030
+        Toyota,11871PK,Retainers Tail Light,"Tail Lamp Assembly Retainers, 8.50 x 10.50mm Hole, White Nylon With Sealer, 25 Pcs.",Toyota # 81496-60010
+        Toyota,10421PK,Retainers Grille,"Radiator Grille Retainers, 5/16"" Hole, 10mm Stem, Natural Nylon With Sealer, 25 Pcs.","G.M. # 94848834, Toyota # 62955-20020"
+        Toyota,10430PK,Retainers Grille,"Radiator Grille Retainers, 8.00 x 9.00mm Hole, 10mm Stem, Black Nylon, 15 Pcs.",Toyota # 90904-67021
+        Toyota,9082PK,Retainers Grille,"Headlight Grille Clips, 22mm Length, Black Plastic, 25 Pcs.","G.M. # 94218027, Isuzu # 8942180270, Mazda # B092-50-715, Toyota # 90467-13011"
+        Toyota,11951PK,Retainers Slotted Screw,"Cover & Fender Liner Retainers, 35mm Width, Black Nylon, 10 Pcs.",Lexus # 53879-50020
+        Toyota,11950PK,Retainers Slotted Screw,"Front Bumper Cover & Fender Liner Pins, 10mm Head, 24mm Stem, Black Nylon, 15 Pcs.","Lexus # 47749-50090, Toyota # 53879-30040"
+        Toyota,10608PK,Retainers Slotted Screw,"Front Fender & Bumper Cover Clips, 25mm Width, Black Nylon, 5 Pcs.","G.M. # 19183888, Toyota # 53879-58010"
+        Toyota,10609PK,Retainers Slotted Screw,"Front Fender & Bumper Cover Pins, 15mm Head, 25mm Stem, Black Nylon, 10 Pcs.","G.M. # 19183917, Toyota # 47749-58010"
+        Toyota,11974PK,Retainers Moulding,"Rocker Moulding Retainers, 9/32"" Hole, 11mm Stem, Yellow Nylon With Sealer, 25 Pcs.",Toyota # 62955-50010
+        Toyota,15513PK,Retainers Moulding,"Wheel Opening Moulding Retainers, 5/16"" Hole, 8mm Stem, White Nylon, 25 Pcs.",Toyota # 90467-08225
+        Toyota,12521PK,Retainers Moulding,"Door Moulding Retainers, 5/16"" Hole, 9mm Stem, Butterscotch Nylon With Sealer, 15 Pcs.","Toyota # 90467-10077, 90080-46269"
+        Toyota,15946PK,Retainers Moulding,"Lower Door Moulding Retainers, 5/16"" Hole, 10mm Stem, White Nylon With Sealer, 25 Pcs.",Toyota # 90467-A0032
+        Toyota,11123PK,Retainers Moulding,"Rocker Moulding Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",Toyota # 75867-02010
+        Toyota,11418PK,Retainers Moulding,"Front Bumper Moulding Retainers, 15/64"" Square Hole, 15mm Stem, Black Nylon, 10 Pcs.",Toyota # 52115-0C090
+        Toyota,16390PK,Retainers Moulding,"Bumper to Fender Retainers, 1/2"" Hole, 23mm Stem, Black Nylon, 25 Pcs.","Toyota # 47749-33030, 47749-02020"
+        Toyota,16098PK,Retainers Moulding,"Bumper to Fender Liner Clips, 43mm Length, Black Nylon, 5 Pcs.","Toyota # 53879-02150, 53879-33030"
+        Toyota,13684PK,Clips Window Regulators,"Window Regulator Dowels, Natural Nylon, 1 Pc.",Ford Explorer 2002-2005
+        Subaru,13324PK,Nuts Nylon,"Screw Grommets, #10 Screw, 7mm Stem, Yellow Nylon, 25 Pcs.","Subaru # 66117-9000, 90930-0007"
+        Subaru,15343PK,Nuts Nylon,"Arm Rest Screw Grommets, #10 Screw, 8.70mm Stem, White Nylon, 15 Pcs.",Subaru # 94079AA000
+        Subaru,13323PK,Nuts Nylon,"Screw Grommets, #12 Screw, 18mm Stem, White Nylon With Sealer, 15 Pcs.",Subaru # 91084AA010
+        Subaru,15330PK,Nuts Nylon,"Screw Grommets, 8mm Square Hole, 10mm Stem, Blue Nylon, 25 Pcs.",Subaru # 62731-FA010
+        Subaru,18884PK,Nuts Nylon,"Tail Light Grommets, 21/64"" Hole, 14mm Stem, White Nylon, 15 Pcs.",Subaru # 909220013
+        Subaru,15341PK,Nuts Nylon,"Bumper Cover Grommets, 25/64"" Hole, 19.50mm Stem, Black Nylon With Sealer, 15 Pcs.",Subaru # 99011FC000NN
+        Subaru,16401PK,Clips Routing Cable Tubing,"Trunk Release Cable Clips, 25/64"" Hole, Holds 5mm Cable, Black Nylon, 25 Pcs.",Subaru # 909205056
+        Subaru,12084PK,Retainers Shield,"Trunk Interior Trim Retainers, 9/32"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Subaru # 99045AE03AMA
+        Subaru,12852PK,Retainers Hood Insulation,"Insulation Retainers, 1/4"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Subaru # 90814-FC001
+        Subaru,12092PK,Retainers Hood Insulation,"Hood Insulators Retainers, 9/32"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Subaru # 90913-0074
+        Subaru,15694PK,Retainers Hood Insulation,"Hood Insulators Retainers, 5/16"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Subaru # 909207031
+        Subaru,12455PK,Retainers Weatherstrip,"Weatherstrip Retainers, 13/64"" Hole, 8mm Stem, Black Nylon, 25 Pcs.","Honda # 91520-SCC-003, Nissan # 01553-08961, Subaru # 90826FA000"
+        Subaru,16149PK,Retainers Push Type,"Front & Rear Bumper Push Type Retainers, 13/64"" Hole, 8.50mm Stem, Black Nylon, 25 Pcs.",Subaru # 909140059
+        Subaru,12087PK,Retainers Slotted Screw,"Slotted Fender Liner Retainers, 9/32"" Hole, 11mm Stem, Black Nylon, 10 Pcs.",Subaru # 90914-0052
+        Subaru,15334PK,Retainers Slotted Screw,"Cowl Vent Push Type Retainers, 9/32"" Hole, 12mm Stem, Black Nylon, 10 Pcs.",Subaru # 90914-0063
+        Subaru,15342PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 5/16"" Hole, 10mm Stem, Pink Nylon, 25 Pcs.",Subaru # 65548GA250
+        Subaru,12089PK,Retainers Door Trim Panel,"Door & Fender Trim Retainers, 23/64"" Hole, 11.50mm Stem, Black Nylon, 25 Pcs.",Subaru # 90913-0109
+        Subaru,12093PK,Retainers Cowl Panel,"Cowl Grommets, 9/32"" Hole, 7mm Stem, Natural Nylon, 25 Pcs.",Subaru # 91486-KJ000
+        Subaru,16387PK,Retainers Cowl Panel,"Cowl Grille Grommets, 9/32"" Hole, 7.30mm Stem, Gray Nylon, 25 Pcs.",Subaru # 91486FL020
+        Subaru,12094PK,Retainers Cowl Panel,"Cowl Retainers, 3mm Pin, 13mm Stem, Black Nylon, 25 Pcs.",Subaru # 91486-KJ010
+        Subaru,14978PK,Retainers Moulding,"Moulding Clips, 21/64"" Hole, 11mm Stem, Pink Nylon With Sealer, 25 Pcs.",Subaru # 90913-0008
+        Nissan,12898PK,"Nuts Nylon ""U"" Type","""U"" Type Nuts, #10 Screw, Up to 1.50mm Panel, White Nylon, 15 Pcs.",Nissan # 76882-0M000
+        Nissan,11161PK,"Nuts Nylon ""U"" Type","""U"" Type Nuts, #12 Screw, Up to 1mm Panel, Black Nylon, 10 Pcs.",Nissan # 63848-D0100
+        Nissan,9530PK,"Nuts Nylon ""U"" Type","Inner Fender ""U"" Type Nuts, #12 Screw, Up to 2mm Panel, Black Nylon, 25 Pcs.","Nissan # 63848-D4000, 63848D4001"
+        Nissan,16369PK,"Nuts Nylon ""U"" Type","License Plate Bracket ""U"" Nuts, 6-1.00 Screw, 3.50mm Panel, Black Nylon & Metal, 25 Pcs.",Nissan # 01241-01051
+        Nissan,11128PK,"Nuts Speed Type ""U""","Speed Type ""U"" Nuts, #14 Screw, Zinc Organic Finish, 25 Pcs.","Nissan # 08967-1065A, Tesla # 1006518-00-A"
+        Nissan,9665PK,Nuts Nylon,"Screw Grommets, #4 Screw, 16mm Stem, White Nylon With Sealer, 10 Pcs.",Nissan # 01281-01121
+        Nissan,15148PK,Nuts Nylon,"Screw Grommets, #6 Screw, 9.50mm Stem, Natural Nylon, 25 Pcs.",Nissan # 96706-H2500
+        Nissan,10619PK,Nuts Nylon,"Windshield Moulding Grommets, #6 Screw, 12mm Stem, Blue Nylon With Sealer, 10 Pcs.",Nissan # 76848-50Y00
+        Nissan,2156PK,Nuts Nylon,"Body Side Screw Grommets, #6 Screw, 16.50mm Stem, Natural Nylon With Sealer, 15 Pcs.",Nissan # 01281-00501
+        Nissan,1577PK,Nuts Nylon,"Side Marker Light Screw Grommets, #8 Screw, 6.50mm Stem, Natural Nylon, 50 Pcs.","Honda # 75522-611-000, Mazda # 9991-00-412, Nissan # 96706-B0700"
+        Nissan,9688PK,Nuts Nylon,"Bumper, Fender & Light Screw Grommets, #8 Screw, 10mm Stem, Natural Nylon, 25 Pcs.",Nissan # 01281-00831
+        Nissan,10617PK,Nuts Nylon,"Bumper Screw Grommets, #8 Screw, 14mm Stem, Natural Nylon, 25 Pcs.",Nissan # 71144-SR3-A00
+        Nissan,11028PK,Nuts Nylon,"Rocker Moulding Screw Grommets, #8 Screw, 15mm Stem, Natural Nylon With Sealer, 10 Pcs.",Nissan # 01281-00711
+        Nissan,1572PK,Nuts Nylon,"Screw Grommets, #8 Screw, 17mm Stem, Natural Nylon, 25 Pcs.","Honda # 90661-SC7-003, Mazda # H001-50-841, Nissan # 01651-00481"
+        Nissan,12051PK,Nuts Nylon,"Screw Grommets, #8 Screw, 20mm Stem, Natural Nylon With Sealer, 15 Pcs.",Nissan # 01281-00691
+        Nissan,9323PK,Nuts Nylon,"Screw Grommets, #10 Screw, 7mm Stem, Natural Nylon, 50 Pcs.","Mitsubishi # MB383455, Nissan # 01281-00022"
+        Nissan,18102PK,Nuts Nylon,"Front & Rear Bumper Screw Grommets, #12 Screw, 9mm Stem, Yellow Nylon, 25 Pcs.",Nissan # 85099-1MA0A
+        Nissan,11020PK,Nuts Nylon,"Rocker Panel Screw Grommets, #14 Screw, 16mm Stem, Natural Nylon With Sealer, 25 Pcs.",Nissan # 01281-00331
+        Nissan,13440PK,Nuts Nylon,"Screw Grommets, #14 Screw, 16mm Stem, Brown Nylon With Sealer, 15 Pcs.",Nissan # 26557-2U001
+        Nissan,11129PK,Nuts Nylon,"Front Bumper Grommets, 22mm Length, Natural Nylon, 50 Pcs.",Nissan # 01281-0132
+        Nissan,9418PK,Nuts Nylon,"Grille Grommet Retainers, 22mm Width, Black Nylon, 10 Pcs.",Nissan # 62380-U7400
+        Nissan,15017PK,Nuts Nylon,"Headlight Assembly Grommets, 11.50 x 18.00mm Hole, Black Nylon, 10 Pcs.",Nissan # 76848-8J010
+        Nissan,10618PK,Pin and Grommets,"Cowl Vent Screw Grommets, 8.00 x 9.00mm Hole, White Nylon With Sealer, 15 Pcs.",Nissan # 80874-0P000
+        Nissan,10678PK,Pin and Grommets,"Cowl Screen Pin, 4.10mm Pin, 15mm Stem, Black Nylon, 25 Pcs.",Nissan # 66820-88E00
+        Nissan,9679PK,Pin and Grommets,"Wheel Well Opening Moulding Clips, 8.00 x 17.00mm Head, Yellow Nylon, 25 Pcs.",Nissan # 76847-JG00A
+        Nissan,9678PK,Pin and Grommets,"Wheel Well Opening Screw Grommets, #14 Screw, 10mm Stem, Gray Nylon, 15 Pcs.",Nissan # 76848-JG00A
+        Nissan,13247PK,Clips Routing,"Tubing or Cable Routing Clips, 13/64"" Hole, 5mm Cable, Black Nylon, 25 Pcs.","Nissan # 84653-N7400, 65624-V0100"
+        Nissan,9666PK,Clips Routing,"Tube & Cable Routing Clips, 1/4 x 3/8"" Hole, 7mm Cable, Black Nylon, 25 Pcs.",Nissan # 28945-CA000
+        Nissan,12437PK,Retainers Shield,"Trim Panel Retainers, 5/32"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",Nissan # 80875-85E00
+        Nissan,11121PK,Retainers Shield,"Bumper Cover Retainers, 13/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Nissan # 01553-01A50
+        Nissan,9528PK,Retainers Shield,"Rear Bumper Fascia Retainers, 13/64"" Hole, 17.80mm Stem, Black Nylon, 25 Pcs.","G.M. # 1644290, Nissan # 01553-0075U, Tesla # 1021886-00-A"
+        Nissan,12453PK,Retainers Shield,"Trim Panel Retainers, 15/64"" Hole, 20mm Stem, Black Nylon, 25 Pcs.","Honda # 90667-SA0-0030, Nissan # 76996-01P02"
+        Nissan,12508PK,Retainers Shield,"Trim Panel Retainers, 9/32"" Hole, 15mm Stem, Black Nylon, 25 Pcs.","Nissan # 01553-0052U, 01553-09001"
+        Nissan,12900PK,Clips Retaining,"Retaining Clips, 13/64"" Hole, 13mm Stem, Black Nylon, 50 Pcs.",Nissan # 01553-00401
+        Nissan,1466PK,Clips Retaining,"Retaining Clips, 13/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.","Nissan # 01553-00172, Toyota # 90467-07050"
+        Nissan,10415PK,Clips Retaining,"Retaining Clips, 13/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Nissan # 27948-M7002
+        Nissan,1634PK,Clips Retaining,"Retaining Clips, 15/64"" Hole, 16mm Stem, Black Nylon, 50 Pcs.","Honda # 90467-11005, Isuzu # 89421-76980, Mazda # 9926-40-658, Nissan # 76906-T3000"
+        Nissan,10417PK,Clips Retaining,"Retaining Clips, 9/32"" Hole, 12mm Stem, Black Nylon, 50 Pcs.",Nissan # 01553-0020
+        Nissan,1579PK,Clips Retaining,"Retaining Clips, 9/32"" Hole, 16mm Stem, Black Nylon, 50 Pcs.","Honda # 90685-SA5-003, Nissan # 01553-00051"
+        Nissan,10203PK,Clips Hood Prop Rod,"Hood Prop Rod Clips, 8mm Rod, 7mm Hole, Black Nylon, 10 Pcs.",Nissan # 65722-EA000
+        Nissan,11168PK,Retainers Hood Seal,"Hood Seal Retaining Clips, 15/64"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",Nissan # 65810-K2000
+        Nissan,2025PK,Retainers Hood Insulation,"Hood Insulation Retainers, 13/64"" Hole, 9mm Stem, Black Nylon, 15 Pcs.","Nissan # 65846-30F00, 65832-F5000"
+        Nissan,2153PK,Retainers Phillips Screw,"Bumper & Fascia Phillips Screw Retainers, 7/16"" Hole, 14mm Stem, Black Nylon, 15 Pcs.","Nissan # 01553-03101, 01553-02741"
+        Nissan,10199PK,Clips Door Rod End,"Door Rod End Clips, 3.50mm Rod, Left Hand Side, Cream Nylon, 25 Pcs.",Nissan # 80533-AA100
+        Nissan,10198PK,Clips Door Rod End,"Door Rod End Clips, 3.50mm Rod, Right Hand Side, Purple Nylon, 25 Pcs.",Nissan # 80532-AA100
+        Nissan,10197PK,Clips Door Rod End,"Door Rod End Clips, 4mm Rod, Left Hand Side, Blue Nylon, 25 Pcs.",Nissan # 80533-89900
+        Nissan,10201PK,Clips Door Rod End,"Door Rod End Clips, 4.20mm Rod, Left Hand Side, Natural Nylon, 25 Pcs.",Nissan # 80533-01R00
+        Nissan,10200PK,Clips Door Rod End,"Door Rod End Clips, 4.20mm Rod, Right Hand Side, Yellow Nylon, 25 Pcs.",Nissan # 80532-01R00
+        Nissan,2034PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 13/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.","Honda # 90667-SA7-003, Nissan # 89427-98070"
+        Nissan,16376PK,Retainers Door Trim Panel,"Door Insulator Retainers, 15/64"" Hole, 19mm Stem, Yellow Nylon, 25 Pcs.",Nissan # 80897-7J100
+        Nissan,13394PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 9/32"" Hole, 16mm Stem, Black Nylon, 25 Pcs.","Honda # 90677-671-0132A, Mitsubishi # MC440901, Nissan # 62660-48600-1"
+        Nissan,9664PK,Retainers Door Trim Panel,"Front Door, Garnish & Interior Trim Retainers, 10mm Stem, Natural Nylon, 25 Pcs.",Nissan # 80287-37F00
+        Nissan,15079PK,Retainers Tail Light,"Tail Light Clips, 9.70 x 10.20mm Hole, White Nylon, 25 Pcs.",Nissan # 26398-ED000
+        Nissan,11022PK,Retainers Bumper,"Bumper Retainers, 13/32"" Hole, 21mm Stem, White Nylon With Sealer, 10 Pcs.",Nissan # 85284-CD000
+        Nissan,11131PK,Retainers Bumper,"Rear Bumper Retainers, 1/2"" Hole, 21mm Stem, Black Nylon With Sealer, 10 Pcs.",Nissan # 85284-AD005
+        Nissan,12510PK,Retainers Grille,"Grille Retainers, 7.50mm Head, 22mm Length, Black Nylon, 25 Pcs.","Nissan # 01553-03831, 62318-H8500"
+        Nissan,16395PK,Retainers Grille,"Grille Retainers, 7.50mm Head, 25mm Length, Black Nylon, 15 Pcs.",Nissan # 76882-OM060
+        Nissan,9070PK,Retainers Grille,"Grille Retainers, 10.50mm Head, 21.50mm Length, Dark Gray Nylon, 25 Pcs.",Nissan # 62318-01W00
+        Nissan,10621PK,Retainers Moulding,"Cowl Vent Retainers, 4mm Stem, 13mm Length, White Nylon, 25 Pcs.",Nissan # 66820-3S500-C1
+        Mazda,15214PK,Nuts Nylon,"Metric ""U"" Type Nuts, #10 Screw, Up to 1mm Panel, Gray Nylon, 25 Pcs.",Mazda # B455-56-135
+        Mazda,18105PK,Nuts Nylon,"Front Bumper ""U"" Type Nuts, #10 Screw, Up to 1mm Panel, Gray Nylon, 25 Pcs.",Mazda # C274-50-133
+        Mazda,9659PK,Nuts Nylon,"Screw Grommets, #8 Screw, 15mm Stem, White Nylon, 10 Pcs.",Mazda # GJ6A-58-975
+        Mazda,1614PK,Nuts Nylon,"Screw Grommets, #10 Screw, 8mm Stem, Natural Nylon, 25 Pcs.","Honda # 75521-611-0000, Mazda # 9991-00-601, Nissan # 96706-P0105"
+        Mazda,1296PK,Nuts Nylon,"Screw Grommets, #10 Screw, 8mm Stem, Natural Nylon, 25 Pcs.","Honda # 90662-671-003, Mazda # 9991-00-503, Nissan # 68425-H5000"
+        Mazda,14992PK,Nuts Nylon,"Splash Shield Grommets, #10 Screw, 7.50mm Stem, Natural Nylon, 25 Pcs.",Mazda # 9991-00-501
+        Mazda,17067PK,Nuts Nylon,"Tail Light Grommets, 5/16"" Hole, 14mm Stem, Natural Nylon With Sealer, 25 Pcs.",Mazda # GA7B-51-146
+        Mazda,16380PK,Nuts Specialty,"Emblem Tubular Nuts, 2.50mm Stud, Clear Nylon With Sealer, 25 Pcs.",Mazda # LA01-51-958
+        Mazda,16383PK,Nuts Specialty,"Emblem Push Nuts, 3.50mm Stud, Stainless Steel, 50 Pcs.",Mazda # 9957-83-000
+        Mazda,9820PK,Clips Routing Cable & Tube,"Tube or Cable Routing Clips, 15/64"" Hole, 8mm Cable, Natural Nylon, 25 Pcs.",Mazda # 9927-70-901
+        Mazda,18108PK,Clips Routing Cable & Tube,"Hood Release Cable Clips, 15/64"" Hole, 9mm Stem, Holds 5mm Cable, Black Nylon, 25 Pcs.",Mazda # D001-56-731
+        Mazda,9886PK,Clips Retaining,"Retaining Clips, 7/32"" Hole, 15mm Stem, Black Nylon, 50 Pcs.","Mazda # 9926-40-543A, Nissan # 01553-0029"
+        Mazda,10414PK,Clips Retaining,"Retaining Clips, 5/16"" Hole, 15mm Stem, Black Nylon, 25 Pcs.","Mazda # B001-68-302-00, Toyota # 90950-01248"
+        Mazda,10407PK,Clips Retaining,"Retaining Clips, 5/16"" Hole, 18mm Stem, Black Nylon, 25 Pcs.",Mazda # 8133-50-022
+        Mazda,12546PK,Retainers Push Type,"Push Type Retainers, 15/64"" Hole, 12mm Stem, Gray Nylon, 25 Pcs.",Mazda # GJ21-68885-B69
+        Mazda,15853PK,Retainers Push Type,"Interior Trim Push Type Retainers, 15/64"" Hole, 16mm Stem, Black Nylon, 25 Pcs.",Mazda # B101-68-252-00
+        Mazda,16341PK,Retainers Push Type,"Rear Trunk Liner Push Type Retainers, 15/64"" Hole, 14mm Stem, Black Nylon, 25 Pcs.",Mazda # B467-68-AC3-02
+        Mazda,15951PK,Retainers Push Type,"Push Type Retainers, 9/32"" Hole, 11mm Stem, Black Nylon, 15 Pcs.",Mazda # S51S-51-833
+        Mazda,11019PK,Retainers Push Type,"Cowl, Bumper & Fender Liner Push Retainers, 5/16"" Hole, 12mm Stem, Black Nylon, 10 Pcs.","Mazda # L33X13209, Nissan # 01553-05323"
+        Mazda,18234PK,Retainers Push Type,"Bumper, Engine Cover, Fender & Quarter Panel Push Type Retainers, 5/16"" Hole, 13mm Stem, Black Nylon, 25 Pcs.","Mazda # B45A-56-146A, Toyota # 90118-WB048"
+        Mazda,18109PK,Retainers Push Type,"Bumper Cover & Fender Liner Push Type Retainers, 5/16"" Hole, 14mm Stem, Black Nylon, 25 Pcs.",Mazda # BGV4-56-145
+        Mazda,13238PK,Retainers Push Type,"Bumper Cover Push Type Retainers, 25/64"" Hole, 15mm Stem, Black Nylon, 10 Pcs.",Mazda # GD7A-50-EA1
+        Mazda,13396PK,Retainers Phillips Screw,"Cowl Vent Phillips Screw Retainers, 13/64"" Hole, 9mm Stem, Black Nylon, 15 Pcs.","Ford # 3M8Z-1502316-A, Mazda # GJ6W-50-715A"
+        Mazda,9108PK,Retainers Phillips Screw,"Phillips Screw Retainers, 15/64"" Hole, 9mm Stem, Black Nylon, 15 Pcs.","Isuzu # 8942431900, Mazda # 1395-68-676, Nissan # 9926-50-635"
+        Mazda,2015PK,Retainers Phillips Screw,"Phillips Screw Retainers, 9/32"" Hole, 11mm Stem, Black Nylon, 25 Pcs.","G.M. # 94198687, Honda # 90657-SA6-003, Mazda # N304-13-356-A"
+        Mazda,10043PK,Retainers Phillips Screw,"Bumper Cover Retainers, 25/64"" Hole, 20mm Stem, Black Nylon, 10 Pcs.","Ford # E922-17C756-C, Mazda # GJ21-50-034"
+        Mazda,10223PK,Clips Door Rod End,"Door Rod End Clips, 4.20mm Rod, Left Hand Side, Blue Nylon, 25 Pcs.",Mazda # 9927-80-404
+        Mazda,10224PK,Clips Door Rod End,"Door Rod End Clips, 4.20mm Rod, Right Hand Side, Black Nylon, 25 Pcs.",Mazda # 9927-80-405
+        Mazda,10575PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 10 Pcs.",Mazda # GA2A-68-AB1A
+        Mazda,11907PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 21/64"" Hole, 16mm Stem, Caramel & Natural, 25 Pcs.","Ford # W708621-S300, Mazda # EC01-68-AB1"
+        Mazda,9081PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 23/64"" Hole, 14mm Stem, Natural Nylon, 25 Pcs.","G.M. # 94226492, Isuzu # 8-94226-492-0, Mazda # 9927-40-825"
+        Mazda,10405PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 23/64"" Hole, 14mm Stem, White Nylon, 25 Pcs.","Mazda # 9927-40-822, Toyota # 62581-14020"
+        Mazda,10749PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 3/8"" Hole, 14mm Stem, White Nylon With Sealer, 10 Pcs.",Mazda # G18K-51-SJ3
+        Kia,12062PK,Nuts Nylon,"Front & Rear Bumper Cover Nuts, 11mm Head, 9mm Stem, White Nylon, 25 Pcs.",Kia # 86699-2D000
+        Kia,10781PK,Nuts Nylon,"Headlight Assembly Grommets, 15mm Head, 8mm Stem, Natural Nylon, 25 Pcs.","Hyundai # XG300/350, Kia # 92351-37000"
+        Kia,12056PK,Nuts Nylon,"Cowl Trim Retainers, 14mm Hex, 25mm Flange, Black Nylon, 25 Pcs.",Kia # 0K95A-68615
+        Kia,18891PK,Retainers Hood Seal,"Hood Seal & Rocker Moulding Upper Clips, 1/4"" Hole, 9.50mm Stem, Black Nylon, 25 Pcs.","Hyundai # 86438-A5000, Kia # 86438-A5000"
+        Kia,12075PK,Retainers Grommet,"Bumper Cover Clips, 25.00 x 30.00mm Head, Black Nylon With Sealer, 5 Pcs.",Kia # 86591-25000
+        Kia,12377PK,Retainers Phillips Screw,"Grille Phillips Screw Retainers, 5/16"" Hole, 12mm Stem, Black Nylon, 15 Pcs.",Kia # 0G032-50037-A
+        Kia,5900PK,Retainers Phillips Screw,"Inner Fender Phillips Screw Type Retainers, 5/16"" Hole, 18mm Stem, Black Nylon, 25 Pcs.","Ford # NA01-56145, Kia # MNA01-56-145, Nissan # 63844-01A00"
+        Kia,18800PK,Retainers Door Trim Panel,"Door and Trim Mounting Retainers, 3/4"" Overall Height, Green Nylon, 25 Pcs.",Kia # 85859-3S500
+        Hyundai,9662PK,Nuts Nylon,"Bumper Screw Grommets, #8 Screw, 21mm Stem, Natural Nylon With Sealer, 15 Pcs.",Hyundai # 86910-21010
+        Hyundai,10771PK,Nuts Nylon,"Interior Trim Grommets, #10 Screw, 8mm Stem, Yellow Nylon, 25 Pcs.",Hyundai # 81385-38000
+        Hyundai,10796PK,Nuts Nylon,"Bumper & Fender Screw Grommets, #10 Screw, 11mm Stem, White Nylon, 25 Pcs.",Hyundai # 14913-05010
+        Hyundai,10777PK,Nuts Nylon,"Fender Apron Screw Grommets, #10 Screw, 12mm Stem, Black Nylon, 25 Pcs.","Hyundai # 86848-22000, 86848-C8000"
+        Hyundai,12611PK,Nuts Nylon,"Bumper Cover Screw Nuts, #10 Screw, 18mm Stem, White Nylon With Sealer, 25 Pcs.",Hyundai # 86625-35000
+        Hyundai,10775PK,Nuts Nylon,"Rocker Moulding Screw Grommets, #12 Screw, 8.50mm Stem, White Nylon, 25 Pcs.",Hyundai # 87756-35000
+        Hyundai,17932PK,Nuts Specialty,"Wheel Well Liner & Splash Shield Nuts, 14mm Hex, Black Nylon, 15 Pcs.",Hyundai # 84145-26000
+        Hyundai,18118PK,Clips Hood Prop Rod,"Hood Prop Rod Clips, 8mm Rod, 14mm Hole, Black Nylon, 15 Pcs.",Hyundai # 81174-2L000
+        Hyundai,18117PK,Clips Hood Prop Rod,"Hood Prop Rod Clips, Holds 8mm Rod, 9mm Stem, Black Nylon, 15 Pcs.","Hyundai # 81174-21000, 81174-11011"
+        Hyundai,16337PK,Clips Hood Release,"Hood Release Cable Clips, 5/16"" Hole, 19mm Height, Black Nylon, 25 Pcs.",Hyundai # 81199-33000
+        Hyundai,16336PK,Clips Hood Release,"Hood Release Cable Clips, 5/16"" Hole, 19.70mm Height, Black Nylon, 25 Pcs.",Hyundai # 81199-38000
+        Hyundai,16402PK,Retainers Hood Seal,"Hood Seal Retainers, 19/64"" Hole, 10mm Stem, Black Nylon, 50 Pcs.",Hyundai # 86438-1R000
+        Hyundai,10782PK,Retainers Hood Insulation,"Hood Insulation Retainers, 5/16"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Hyundai # 81126-37010
+        Hyundai,18100PK,Retainers Weatherstrip,"Weatherstrip Retainers, 13/64"" Hole, 6mm Stem, Red Nylon, 50 Pcs.",Hyundai # 82133-37000
+        Hyundai,12069PK,Retainers Weatherstrip,"Weatherstrip Retainers, 13/64"" Hole, 10mm Stem, Natural Nylon, 50 Pcs.","Ford # E7GZ-6120586-B, Hyundai # 86438-2B000, Mazda # G031-58-762"
+        Hyundai,17933PK,Retainers Weatherstrip,"Door Weatherstrip Retainers, 13/64"" Hole, 11mm Stem, White Nylon, 25 Pcs.",Hyundai # 82132-27100
+        Hyundai,17937PK,Retainers Weatherstrip,"Weatherstrip Retainers, 1/4"" Hole, 8mm Stem, Pink Nylon, 100 Pcs.",Hyundai # 87756-2W000
+        Hyundai,10767PK,Retainers Weatherstrip,"Hood Seal Retainers, 1/4"" Hole, 11mm Stem, Black Nylon, 100 Pcs.",Hyundai # 86438-4A100
+        Hyundai,10766PK,Retainers Weatherstrip,"Hood Seal Retainers, 1/4"" Hole, 14mm Stem, Black Nylon, 50 Pcs.",Hyundai # 86434-4A000
+        Hyundai,15082PK,Retainers Weatherstrip,"Belt Moulding Weatherstrip Clips, 18.30mm Wide, White Nylon, 25 Pcs.",Hyundai # 83219-22000
+        Hyundai,15146PK,Retainers Push Type,"Cowl & Bumper Push Type Retainers, 1/4"" Hole, 10mm Stem, Black Nylon, 15 Pcs.",Hyundai # 86155-2H100
+        Hyundai,17598PK,Retainers Weatherstrip,"Push Type Retainers, 1/4"" Hole, 13mm Stem, Black Nylon, 10 Pcs.","G.M. # 96057846, Hyundai # 86155-2200, Toyota # 90467-07041"
+        Hyundai,13091PK,Retainers Push Type,"Fender Liner Push Type Retainers, 5/16"" Hole, 14mm Stem, Black Nylon, 15 Pcs.","Hyundai # 86595-2T500, 14206-08250-B"
+        Hyundai,9238PK,Retainers Phillips Screw,"Hood Mounting Phillips Screw Type Retainers, 13/64"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Hyundai # 86157-37000
+        Hyundai,15324PK,Retainers Push Type,"Engine Cover & Fender Liner Push Type Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 15 Pcs.","Hyundai # 86590-3S000, Subaru # 90913-0067"
+        Hyundai,9287PK,Retainers Phillips Screw,"Phillips Screw Retainers, 5/16"" Hole, 12mm Stem, Black Nylon, 10 Pcs.","Ford # MB-455-56143, Hyundai # 86590-28000, Mazda # B092-51-833"
+        Hyundai,9680PK,Retainers Phillips Screw,"Bumper Cover Phillips Screw Retainers, 3/8"" Hole, 26mm Stem, Black Nylon, 25 Pcs.",Hyundai # 86590-35000
+        Hyundai,12616PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 9/32"" Hole, 15mm Stem, White Nylon With Sealer, 25 Pcs.",Hyundai # 82315-36000
+        Hyundai,15876PK,Retainers Door Trim Panel,"Door Panel, Interior Trim & Garnish Retainers, 21/64"" Hole, 10mm Stem, Green Nylon, 25 Pcs.",Hyundai # 82315-2W000
+        Honda,13432PK,Nuts Nylon,"Extruded ""U"" Nuts, 6-1.00mm Screw, 2.00 - 4.00mm Panel, Zinc Finish, 25 Pcs.",Honda # 90675-SA5-003
+        Honda,18907PK,Nuts Nylon,"Speed Type ""U"" Nuts, 5.00-0.8mm Screw, 4mm Panel, Zinc Finish, 25 Pcs.",Honda # 90308-SB2-013
+        Honda,17089PK,Nuts Nylon,"""U"" Nuts, 5.00-1.81mm Screw, 2.00-3.50mm Panel, Zinc Finish, 50 Pcs.","Acura# 90331-S3Y-003, Honda # 90331-S3Y-003"
+        Honda,18844PK,Screws Phillips,"Engine Cover #3 Phillips Drive Bolts, 6-1.00 x 15mm, Silver Finish, 15 Pcs.",Honda # 90105-TBA-A00
+        Honda,10246PK,Screws Phillips,"Trim Screws, 5-1.81 x 20mm, Phillips Flat Top, Black Finish, 100 Pcs.","Honda 90103-SDA-A00, 90103-TA0-000"
+        Honda,2157PK,Nuts Nylon,"Center Pillar Screw Grommets, #4 Screw, 17mm Stem, Natural Nylon, 10 Pcs.",Honda # 91620-SR2-003
+        Honda,11414PK,Nuts Nylon,"Door Trim Nuts, #4 Screw, 7mm Stem, Natural Nylon, 25 Pcs.",Honda # 90866-SA0-000
+        Honda,9591PK,Nuts Nylon,"Screw Grommets, #6 Screw, 10mm Stem, Natural Nylon With Sealer, 25 Pcs.","Honda # 90662-693-003, Toyota # 90189-04066"
+        Honda,1636PK,Nuts Nylon,"Screw Grommets, #6 Screw, 15mm Stem, Natural Nylon, 25 Pcs.","Honda # 90672-671-8110M1, Toyota # 90189-04013"
+        Honda,16359PK,Retainers Grommets,"Screw Grommets, 4mm Screw, 9.70mm Stem, Gray Nylon With Sealer, 15 Pcs.",Honda # 90656-SJK-J01
+        Honda,11185PK,Nuts Nylon,"Rear Bumper Fascia Grommets, #8 Screw, 5mm Stem, Gray Nylon, 15 Pcs.","Honda # 90651-SL9-013, 90651-SL9-0130"
+        Honda,10993PK,Nuts Nylon,"Front Fascia Grommets, #8 Screw, 6.40mm Stem, Black Nylon, 15 Pcs.",Honda # 90107-SOX-A01
+        Honda,15038PK,Nuts Nylon,"Side Marker Light Screw Grommet, #8 Screw, 6.50mm Stem, Black Nylon, 50 Pcs.","Honda # 75522-611-000, Mazda # 9991-00-412"
+        Honda,12465PK,Nuts Nylon,"Screw Grommets, #8 Screw, 9.50mm Head, White Nylon, 50 Pcs.",Honda # 34301-692A-0000
+        Honda,16342PK,Nuts Nylon,"Bumper Retainers, #8 Screw, 10mm Stem, White Nylon, 25 Pcs.",Honda # 90101-SHJ-A01
+        Honda,11264PK,Nuts Nylon,"Fender Apron Grommets, #8 Screw, 12mm Stem, Black Nylon, 25 Pcs.",Honda # 90682-SEA-003
+        Honda,11281PK,Nuts Nylon,"Screw Grommets, #8 Screw, 15mm Stem, Natural Nylon With Sealer, 10 Pcs.",Honda # 90664-SB3-003
+        Honda,10658PK,Nuts Nylon,"Door Panel Screw Grommets, #8 Screw, 16mm Stem, Natural Nylon With Sealer, 15 Pcs.","Honda # 90370-SG0-003, 91626-SH3-003"
+        Honda,10978PK,Nuts Nylon,"Bumper Grommets, #10 Screw, 7.30mm Stem, Natural Nylon, 15 Pcs.",Honda # 90107-SX0-003
+        Honda,12914PK,Nuts Nylon,"Wheel Well Moulding Screw Grommets, #10 Screw, 10mm Stem, Black Nylon, 25 Pcs.",Honda # 90107-S10-003
+        Honda,10115PK,Clips Routing Cable & Tube,"Wire Routing Clips, 9/32"" Hole, 6mm Rod, Natural Nylon, 15 Pcs.",Honda # 90654-SA4-003
+        Honda,18110PK,Retainers Shield,"Inner Fender Wheel Well Retainers, 9/64"" Hole, 16mm Stem, Black Nylon, 25 Pcs.",Honda # 91512-SED-003
+        Honda,16458PK,Retainers Shield,"Fender Liner Retainers, 5/32"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Honda # 91501-T2A-003
+        Honda,9857PK,Retainers Shield,"Shield Retainers, 13/64"" Hole, 16mm Stem, Black Nylon, 25 Pcs.","Honda # 90666-SA0-0030, 90666-SA0-003"
+        Honda,12470PK,Retainers Shield,"Trunk Lining Retainers, 13/64"" Hole, 16mm Stem, Black Nylon, 15 Pcs.","Honda # 90666-SA7-003ZW, Lexus # 90467-05020"
+        Honda,16464PK,Retainers Shield,"Front Cowl Retainers, 15/64"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",Honda # 91501-SL4-003
+        Honda,12450PK,Retainers Shield,"Truck Lid & Interior Trim Retainers, 9/32"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Honda # 90671-SOD-003ZK
+        Honda,12473PK,Retainers Nylon Grommets,"Trunk Garnish Shield Retainers, 19/64"" Hole, 20mm Stem, Black Nylon, 15 Pcs.",Honda # 90667-SOD-003ZC
+        Honda,9554PK,Clips Retaining,"Retaining Clips, 13/64"" Hole, 15mm Stem, Black Nylon, 50 Pcs.","Honda # 90687-SA5-0030, 90687-SA5-003"
+        Honda,2002PK,Clips Retaining,"Cowl Top Retaining Clips, 15/64"" Hole, 15mm Stem, Black Nylon, 15 Pcs.",Honda # 91501-SM4-003
+        Honda,12633PK,Clips Retaining,"Cowl & Garnish Retainers, 15/64"" Hole, 16mm Stem, Black Nylon, 10 Pcs.",Honda # 91501-SNA-003
+        Honda,9463PK,Clips Retaining,"Cowl & Garnish Retainers, 15/64"" Hole, 16mm Stem, Black Nylon, 10 Pcs.","Honda # 91501-SEA-003, 91501-SNA-003"
+        Honda,9977PK,Clips Retaining,"Bumper Retainers, 15/64"" Hole, 21mm Stem, Black Nylon, 15 Pcs.","Honda # 90108-SW3-003, 90109-SW3-003"
+        Honda,10408PK,Clips Retaining,"Retaining Clips, 9/32"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Honda # 38529-689A-6300
+        Honda,10416PK,Clips Retaining,"Retaining Clips, 9/32"" Hole, 20mm Stem, Black Nylon, 25 Pcs.","Honda # 90670-692-0030, Toyota # 90467-09065"
+        Honda,12017PK,Clips Retaining,"Retaining Clips, 5/16"" Hole, 15mm Stem, Black Nylon, 25 Pcs.","Honda # 74842-659-003, Toyota # 90467-12078"
+        Honda,10412PK,Clips Retaining,"Retaining Clips, 25/64"" Hole, 20mm Stem, Black Nylon, 25 Pcs.",Honda # 90687-671-0030
+        Honda,10979PK,Retainers Hood Seal,"Hood Seal Retaining Clips, 13/64"" Hole, 8mm Stem, Black Nylon, 25 Pcs.",Honda # 91518-S10-003
+        Honda,18808PK,Retainers Hood Seal,"Fender Garnish Moulding & Hood Seal Retainers, 13/64"" Hole, 10mm Stem, Black Nylon, 50 Pcs.",Honda # 91532-SJA-003
+        Honda,9337PK,Retainers Hood Seal,"Hood Seal Retainers, 13/64"" Hole, 12mm Stem, Natural Nylon, 25 Pcs.",Honda # 91513-SE0-003
+        Honda,12454PK,Retainers Hood Seal,"Cowl Vent & Rear Hood Seal Retainers, 15/64"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Honda # 91502-S84-A11
+        Honda,10379PK,Retainers Hood Insulation,"Hood Insulation Retainers, 15/64"" Hole, 9mm Stem, Black Nylon, 15 Pcs.",Honda # 90700-SB2-003
+        Honda,12448PK,Retainers Hood Insulation,"Hood Insulation Retainers, 9/32"" Hole, 13mm Stem, Black Nylon, 25 Pcs.",Honda # 91501-SWA-003
+        Honda,9208PK,Retainers Weatherstrip,"Weatherstrip Retainers, 15/64"" Hole, 10mm Stem, Orange Nylon, 25 Pcs.","Ford # N807438S, Honda # 91530-SP1-003"
+        Honda,9336PK,Retainers Weatherstrip,"Weatherstrip Retainers, 15/64"" Hole, 10mm Stem, Natural Nylon, 10 Pcs.","Honda # 91530-ST5-003, 91516-SM4-013"
+        Honda,13325PK,Retainers Weatherstrip,"Weatherstrip Retainers, 15/64"" Hole, 11mm Stem, Green Nylon, 25 Pcs.",Honda # 72311-SSS-003
+        Honda,12630PK,Retainers Weatherstrip,"Hood Cowl Weatherstrip Retainers, 15/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Honda # 91515-SR3-000
+        Honda,13236PK,Retainers Push Type,"Interior Trim Push Type Retainers, 9/32"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Honda # 91550-S50-000ZL
+        Honda,2056PK,Retainers Push Type,"Cowl Panel Push Type Retainers, 5/16"" Hole, 11mm Stem, Black Nylon, 10 Pcs.",Honda # 91508-SR3-000
+        Honda,10980PK,Retainers Push Type,"Front Bumper Cover Push Type Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 10 Pcs.",Honda # 90657-SB0-003
+        Honda,9292PK,Retainers Push Type,"Front Fender Push Type Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 15 Pcs.","Ford # W711712-S300, Honda # 91501-S04-003"
+        Honda,12456PK,Retainers Push Type,"Fender Push Type Retainers, 5/16"" Hole, 10mm Stem, Black Nylon, 25 Pcs.",Honda # 91501-TR0-003
+        Honda,10681PK,Retainers Push Type,"Push Type Retainers, 25/64"" Hole, 13mm Stem, Black Nylon With Metal Insert, 10 Pcs.",Honda # 91505-S9A-003
+        Honda,10625PK,Retainers Push Type,"Grille Mounting Push Type Retainers, 25/64"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Honda # 91503-S0K-A01
+        Honda,12888PK,Retainers Push Type,"Bumper Push Type Retainers, 25/64"" Hole, 14mm Stem, Black Nylon, 15 Pcs.",Honda # 91505-TM8-003
+        Honda,10955PK,Retainers Push Type,"Bumper Retainers, 25/64"" Hole, 16mm Stem, Black Nylon With Metal Insert, 10 Pcs.",Honda # 91506-S9A-003
+        Honda,9382PK,Retainers Push Type,"Front & Rear Bumper Push Type Retainers, 25/64"" Hole, 18mm Stem, Black Nylon, 15 Pcs.",Honda # 91503-SZ5-003
+        Honda,1597PK,Retainers Phillips Screw,"Phillips Screw Retainers, 15/64"" Hole, 11mm Stem, Black Nylon, 10 Pcs.","G.M. # 30012018, Honda # 90684-SA5-003, Isuzu # 874-298-1190"
+        Honda,9358PK,Retainers Phillips Screw,"Fender Skirt Phillips Screw Retainers, 15/64"" Hole, 13mm Stem, Black Nylon, 15 Pcs.",Honda # 90683-SA5-003
+        Honda,9144PK,Retainers Phillips Screw,"Bumper & Splash Screw Type Retainers, 1/4"" Hole, 12mm Stem, Black Nylon, 15 Pcs.",Honda # 90657-SA5-003
+        Honda,2155PK,Retainers Nylon Grommets,"Phillips Screw Retainers, 9/32"" Square Hole, 13mm Stem, Black Nylon, 25 Pcs.",Honda # 91550-SH3-003
+        Honda,12586PK,Retainers Phillips Screw,"Phillips Screw Retainers, 9/32"" Hole, 13mm Stem, Black Nylon, 10 Pcs.",Honda # 91502-SZ5-003
+        Honda,5920PK,Retainers Phillips Screw,"Splash Shield Phillips Screw Retainers, 5/16"" Hole, 9mm Stem, Black Nylon, 25 Pcs.","Honda # 90675-SB3-003, Mazda # FB01-56-964, Nissan # 63876-95596"
+        Honda,1976PK,Retainers Phillips Screw,"Fender Splash Phillips Screw Retainers, 5/16"" Hole, 9mm Stem, Black Nylon, 10 Pcs.",Honda # 91512-SM4-003
+        Honda,1972PK,Retainers Phillips Screw,"Splash Shield Phillips Hex Drive Retainers, 5/16"" Hole, 15mm Stem, Black Nylon, 10 Pcs.","Honda # 91516-SK7-013, Nissan # 01553-0034U"
+        Honda,1973PK,Retainers Phillips Screw,"Phillips Screw Retainers, 5/16"" Hole, 21mm Stem, Black Nylon, 10 Pcs.","Honda # 90505-SM4-003, 90505-SM-003"
+        Honda,D-124PK,Retainers Phillips Screw,"Bumper Fascia Phillips Screw Retainers, 25/64"" Hole, 24mm Stem, Black Nylon, 10 Pcs.",Honda # 91504-SM4-000
+        Honda,10788PK,Retainers Door Panel,"Interior Trim Panel Retainers, 21/64"" Hole, 13mm Stem, White and Black Nylon, 10 Pcs.",Honda # 91561-SJD-003
+        Honda,13332PK,Retainers Door Panel,"Door Trim Panel Retainers, 21/64"" Hole, 12mm Stem, Gray Nylon, 10 Pcs.",Honda # 91560-SLJ-J01
+        Honda,12857PK,Retainers Door Panel,"Door Trim Panel Retainers, 21/64"" Hole, 12mm Stem, Gray Nylon, 25 Pcs.",Honda # 91560-SP0-003
+        Honda,10573PK,Retainers Door Panel,"Door Trim Panel Retainers, 21/64"" Hole, 13mm Stem, Blue Nylon, 25 Pcs.",Honda # 91560-S9A-A01
+        Honda,15750PK,Retainers Door Panel,"Rocker, Pillars, Garnish & Exterior Trim Push Type Retainers, 21/64"" Hole, 13mm Stem, White Nylon With Sealer, 15 Pcs.",Honda # 91512-SJK-003
+        Honda,11125PK,Retainers Door Panel,"Rear Liftgate Retainers, 21/64"" Hole, 14mm Stem, Orange Nylon, 15 Pcs.","Ford # W718230-S300, Honda # 91560-S6A-003"
+        Honda,16340PK,Retainers Door Panel,"Door Panel & Trim Retainers, 23/64"" Hole, 11mm Stem, Green Nylon, 25 Pcs.",Honda # 91560-SZW-003
+        Honda,16472PK,Retainers Door Panel,"Trim Panel Retainers, 23/64"" Hole, 11mm Stem, White Nylon With Sealer, 15 Pcs.",Honda # 91560-S0X-A01
+        Honda,2144PK,Retainers Door Panel,"Door Trim Panel Retainers, 23/64"" Hole, 14mm Stem, White Nylon, 15 Pcs.",Honda # 91566-SP0-003
+        Honda,16394PK,Retainers Door Panel,"Lower Door Garnish Midg Retainers, 7/16"" Hole, 9mm Stem, White Nylon W/Sealer, 25 Pcs.","Honda # 75315-TP6-A01, 75315-TG7-A01"
+        Honda,2159PK,Retainers Grille,"Radiator Grille Clips, 18.50 x 23.50mm Head, Black Nylon, 5 Pcs.",Honda # 91578-SV4-003
+        Honda,12468PK,Retainers Cowl,"Cowl Vent Retainers, 1/8"" Hole, 13mm Stem, White Nylon, 10 Pcs.",Honda # 90602-SX0-003
+        Honda,1745PK,Retainers Cowl,"Cowl Vent Panel Retainers, 15/64"" Hole, 11mm Stem, Black Nylon, 25 Pcs.","Honda # 90687-SB0-003, 90687-SB0-013"
+        Honda,12006PK,Retainers Cowl,"Cowl Vent Retainers, 15/64"" Hole, 13mm Stem, Blue Nylon, 10 Pcs.",Honda # 90602-TA0-003
+        Honda,12899PK,Retainers Cowl,"Phillip Screw Retainers, 1/4"" Hole, 12mm Stem, Black Nylon, 25 Pcs.",Honda # 91524-SE0-003
+        Honda,10752PK,Retainers Cowl,"Cowl Vent & Radiator Support Retainers, 23/64"" Hole, 14mm Stem, Orange Nylon, 15 Pcs.",Honda # 90602-SAA-003
+        Honda,13383PK,Retainers Cowl,"Cowl Panel Push Type Retainers, 23/64"" Hole, 13mm Stem, Black Nylon, 5 Pcs.",Honda # 91508-S50-003
+        Honda,18229PK,Retainers Engine Cover,"Engine Cover Retainers, 17mm Stem, Black Nylon, 50 Pcs.",Honda # 91547-TZ5-A02
+        Honda,16366PK,Retainers Head Lamp,"Head Lamp Moulding Retainers, 7mm Width, Black Nylon, 25 Pcs.","Honda # 33152-TLA-A01, 33102-TLA-A01"
+        Honda,15313PK,Retainers Moulding,"Reveal Moulding Pin Retainers, 9/64"" Hole, 13.50mm Stem, Black Nylon, 15 Pcs.",Honda # 90676-SR4-003
+        Honda,11148PK,Retainers Moulding,"Fender Moulding Clips, 6mm Stem, White Nylon, 25 Pcs.",Honda # 91513-SMG-E11
+        Honda,9362PK,Retainers Moulding,"Wheel Arch Garnish Moulding Retainers, 6mm Stem, White Nylon With Sealer, 25 Pcs.",Honda # 91513-SMG-E01
+        Honda,15702PK,Retainers Hood Seal,"Door Trim Moulding Clips, 16mm Height, White Nylon, 15 Pcs.",Honda # 75306-SZA-A01
+        Honda,15034PK,Retainers Moulding,"Body Side Moulding Clips, 1/2"" Hole, 14mm Stem, Red Nylon, 10 Pcs.",Honda 75305-SH4-003
+        Honda,12449PK,Retainers Moulding,"Body Side Moulding Clips, 11.00 x 10.00mm Hole, White Nylon, 10 Pcs.",Honda # 75305-SOA-003
+        Honda,15076PK,Retainers Moulding,"Body Side Moulding Clips, 11.00 x 10.00mm Hole, Blue Nylon, 10 Pcs.",Honda 75305-SH2-003
+        Honda,15976PK,Retainers Hood Seal,"Grille Moulding Clips, 16.50mm Height, White Nylon, 25 Pcs.",Honda # 90666-SDA-A01
+        Honda,9361PK,Retainers Moulding,"Front Bumper, Fender, Trim & Quarter Panel Moulding Clips, 17.50mm Height, Yellow Nylon, 25 Pcs.",Honda # 90601-SMG-003
+        Honda,10790PK,Retainers Moulding,"Door and Bumper Body Side Moulding Clips, 13mm Width, Natural Nylon, 25 Pcs.",Honda # 75305-SHJ-003
+        Honda,12645PK,Retainers Moulding,"Windshield Side Moulding Clips, 45.20mm Length, Pink Nylon, 15 Pcs.",Honda # 91525-SM4-003
+        Honda,16384PK,Retainers Moulding,"Fender & Engine Under Cover Clips, 9.50mm Hole, Black Nylon, 25 Pcs.",Honda # 90501-SJA-A01
+        Honda,2142PK,Retainers Moulding,"Belt Moulding Clips, 31/32"" Width, White Nylon, 10 Pcs.",Honda # 91510-SR3-003
+        Honda,12913PK,Retainers Moulding,"Bumper Moulding Clips, 19.00 x 24.00mm Head, Yellow Nylon, 15 Pcs.",Honda # 91578-T0A-003
+        Honda,10206PK,Retainers Moulding,"Rocker Panel Moulding Retainers, 19mm Height, White Nylon With Sealer, 15 Pcs.",Honda # 91514-SAA-003
+        Honda,13320PK,Retainers Moulding,"Drip Moulding Clips, 20mm Width, Brown Nylon, 25 Pcs.",Honda # 73156-T0A-003
+        Honda,18780PK,Retainers Moulding,"Moulding Retainers, 34mm Height, Tan and Green Nylon, 10 Pcs.",Honda # 91519-SCV-A01
+        BMW,1629PK,Nuts Nylon,"Fender & Bumper Moulding ""U"" Nuts, #8 Screw, 1mm Panel, Natural Nylon, 25 Pcs.",BMW # 07-14-7-311-312
+        BMW,11954PK,Nuts Nylon,"Speed Type U Nuts, #8 Screw, 3.00-4.00mm Panel, Zinc Finish, 50 Pcs.","BMW # 0712-9-925-708, Mercedes # 000-994-25-45"
+        BMW,11286PK,Nuts Nylon,"Speed Type ""U"" Nuts, #10 Screw, .50-1.70mm Panel, Zinc Finish, 50 Pcs.","BMW # 0712-9-925-737, Mercedes # 000-994-06-45"
+        BMW,13301PK,Nuts Nylon,"Speed Type ""U"" Nuts, #10 Screw, .80-1.70mm Panel, Zinc Finish, 50 Pcs.","BMW # 0711-9-916-945, Mercedes # 000-994-14-45"
+        BMW,13434PK,Nuts Nylon,"Speed Type ""U"" Nuts, #10 Screw, 2.30-3.50mm Panel, Zinc Finish, 25 Pcs.",BMW # 07129904150
+        BMW,13299PK,Nuts Nylon,"Flange Nuts, 5mm Stud, Black Nylon, 25 Pcs.","BMW # 16-13-1-176-747, Mercedes # 003-990-02-51"
+        BMW,13333PK,Nuts Nylon,"Tubular Nuts, 9/32"" Stud, Natural Nylon, 25 Pcs.","BMW # 51-44-7-780-135, Mercedes # 108-988-00-27"
+        BMW,15756PK,Nuts Nylon,"Heater & Air Conditioning Duct Nuts, 4.80mm Stud, Black Nylon, 25 Pcs.",BMW # 51711958025
+        BMW,18099PK,Nuts Nylon,"Sound Insulation Grommets, 23/64"" Hole, Gray Nylon, 10 Pcs.",BMW # 51-48-8-126-849
+        BMW,13242PK,Nuts Acorn With Brass Insert,"Acorn Nuts With Brass Insert, 4.00-70mm Thread, Black Nylon Coated, 15 Pcs.","BMW # 07-13-0-702-715, Honda # 75307-SN7-000"
+        BMW,18103PK,Retainers Shield,"Seat Back Panel Retainers, 19/64"" Hole, 25mm Stem, Black Nylon, 25 Pcs.",BMW # 52-20-1-964-201
+        BMW,12859PK,Retainers Hood Insulation,"Hood & Trunk Insulation Retainers, 9/32"" Hole, 9mm Stem, Black Nylon, 25 Pcs.","BMW # 51-48-1-915-464, 51-48-1-938-725"
+        BMW,18903PK,Retainers Hood Insulation,"Head Lamp, Glove Box & Inter Retainers, 23/64"" Hole, Black Nylon, 15 Pcs.",BMW # 51-71-1-916-197
+        BMW,12540PK,Retainers Push Type,"Rocker Panel Push Type Retainer, 13/64"" Hole, 11mm Stem, Black Nylon, 50 Pcs.","BMW # 51161-881-149, Chrysler # 5073327AA, Mercedes # 000-990-34-92"
+        BMW,12395PK,Clips Retaining,"Scuff Plate Retainers, 15/64"" Hole, White Nylon, 25 Pcs.","BMW # 5147-1-840-961, 51-47-1-840-960"
+        BMW,12394PK,Retainers Push Type,"Scuff Plate Push Type Retainers, 1/4"" Hole, 15mm Stem, Black Nylon, 50 Pcs.","BMW # 51-11-1-908-077, Mercedes # 000-990-54-92"
+        BMW,12461PK,Retainers Push Type,"Front Bumper & Wheel Opening Push Type Retainers, 1/4"" Hole, 15mm Stem, Black Nylon, 50 Pcs.",BMW # 51-11-1-944-537
+        BMW,11137PK,Retainers Push Type,"Bumper Trim Push Type Retainers, 1/4"" Hole, 17mm Stem, Black Nylon, 25 Pcs.",BMW # 51-11-8-174-185
+        BMW,13314PK,Retainers Push Type,"Interior Trim Push Type Retainers, 1/4"" Hole, 17mm Stem, Black Nylon, 25 Pcs.",BMW # 51471919209
+        BMW,16330PK,Retainers Push Type,"Rocker Moulding, 5/16"" Hole, 19mm Stem, Black Nylon, 25 Pcs.",BMW # 07-14-7-281-961
+        BMW,11412PK,Retainers Push Type,"Push Type Retainers, 21/64"" Hole, 14mm Stem, Black Nylon, 25 Pcs.","BMW # 51471911992, Mercedes # 201-990-02-92"
+        BMW,12180PK,Retainers Push Type,"Trim Panel & Trunk Lining Retainers, 23/64"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",BMW # 51-48-8-181-420
+        BMW,13342PK,Retainers Phillips Screw,"Phillips Screw Retainers, 15/64"" Hole, 17mm Stem, Black Nylon, 25 Pcs.",BMW # 5113-885-399
+        BMW,16404PK,Retainers Push Type,"Hood Insulator & Rear Bumper Push Type Retainers, 9/32"" Hole, 11mm Stem, Black Nylon, 50 Pcs.",BMW # 51-48-1-915-964
+        BMW,15754PK,Retainers Phillips Screw,"Upper Cover Phillips Screw Retainers, 9/32"" Hole, 13mm Stem, Black Nylon, 15 Pcs.",BMW # 51-16-8-197-908
+        BMW,13345PK,Retainers Phillips Screw,"Phillips Screw Retainers, 17/64"" Hole, 16mm Stem, Black Nylon, 50 Pcs.",BMW # 51218-205-295
+        BMW,13346PK,Retainers Phillips Screw,"Cowl Panel Moulding Inserts, 23/64"" Hole, 11mm Stem, Black Plastic, 50 Pcs.",BMW # 51-13-8-124-389
+        BMW,9202PK,Retainers Phillips Screw,"Front & Rear Bumper Phillips Screw Retainers, 25/64"" Hole, 15mm Stem, Black Nylon, 15 Pcs.","Acura # 91503-SP0-003, BMW # 07-13-0-702-966, G.M. # 94530623"
+        BMW,18115PK,Retainers Torx Screw,"Side Shield & Trim Retainers, 5/32"" Hole, 23mm Stem, Black Nylon T27 Torx® Drive, 25 Pcs.",BMW # 07-14-7-296-886
+        BMW,15979PK,Retainers Torx Screw,"Rocker Trim Wheelhouse Retainers, T10 Torx® Drive, Black Nylon, 15 Pcs.",BMW # 07-14-7-122-913
+        BMW,16403PK,Retainers Door Trim Panel,"Door Sill Retainers, 15/64"" Hole, 10mm Stem, Yellow Nylon, 50 Pcs.",BMW # 51-47-8-244-458
+        BMW,9230PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 5/16"" Hole, 14mm Stem, Gray Nylon With Sealer, 25 Pcs.","BMW # 5141822478, 51410407983"
+        BMW,14284PK,Retainers Moulding,"Moulding Clips, 3/8"" Hole, 11mm Stem, White Nylon With Blue Rubber Boot, 25 Pcs.",BMW # 51-13-8-166-675
+        BMW,12462PK,Retainers Moulding,"Body Side Moulding Clips, 25/64"" Hole, 10mm Stem, White Nylon, 25 Pcs.",BMW # 51-13-2-251-394
+        BMW,12466PK,Retainers Moulding,"Body Side Moulding Clips, 25/64"" Hole, 11mm Stem, White Nylon, 25 Pcs.",BMW # 51-13-1-960-054
+        BMW,13447PK,Retainers Moulding,"Moulding Clips, 21mm Stem, Red Nylon, 15 Pcs.",BMW # 51-71-7-127-742
+        BMW,12460PK,Retainers Moulding,"Windshield Moulding Clips, 54.50mm Length, Gray Nylon, 15 Pcs.","BMW 7 Series 1987-Up, BMW # 51-31-1-938-494"
+        BMW,13687PK,Clips Window Regulator,"Window Regulator Clips, 23.88mm Width, Red Nylon, 2 Pcs.",BMW E46
+        BMW,13523PK,Clips Window Regulator,"Window Regulator Clips, 37.90mm Width, 2 Pcs.","BMW 3 & 5 Series 1988-On, BMW # 51231-938-884"
+        Acura,11147PK,Nuts Nylon,"Rear Hatch Screw Grommets, #6 Screw, 10mm Stem, Gray Nylon With Sealer, 10 Pcs.",Acura # 91601-STX-A00
+        Acura,9283PK,Clips Retaining,"Retaining Clips, 13/64"" Hole, 13mm Stem, Black Nylon, 50 Pcs.","Acura # 90001-SG0-003, Honda # 66435-648-0000"
+        Acura,9945PK,Retainers Hood Insulation,"Hood Insulation Retainers, 19/64"" Hole, 10mm Stem, Black Nylon, 15 Pcs.",Acura # 90700-SJ4-000
+        Acura,10663PK,Retainers Weatherstrip,"Weatherstrip Retainers, 13/64"" Hole, 7.80mm Stem, Yellow Nylon, 100 Pcs.","Honda # 90651-TP8-003, 91568-TR0-003"
+        Acura,2128PK,Retainers Push Type,"Fender & Bumper Push Type Retainers, 5/16"" Hole, 11mm Stem, Black Nylon, 25 Pcs.","Acura # 91512-SX0-003, G.M. # 11519949, Mitsubishi # MU000319"
+        Acura,9282PK,Retainers Push Type,"Front Bumper Push Retainers, 25/64"" Hole, 16mm Stem, Black Nylon, 15 Pcs.",Acura # 91503-SZ3-003
+        Mitsubishi,12725PK,Nuts Nylon,"Screw Grommets, #8 Screw, 16mm Stem, Black Nylon, 15 Pcs.","Mitsubishi # MB029111, Toyota # 90189-04008"
+        Mitsubishi,10406PK,Nuts Nylon,"Trunk Trim Screw Grommets, #8 Screw, 18mm Stem, Natural Nylon With Sealer, 15 Pcs.",Mitsubishi # MU480034
+        Mitsubishi,1560PK,Nuts Nylon,"Grille Screw Grommets, #10 Screw, 11mm Stem, Natural Nylon, 50 Pcs.","G.M. # 94841764, Mitsubishi # MS480002, Toyota # 90189-05013"
+        Mitsubishi,1576PK,Nuts Nylon,"Screw Grommets, #10 Screw, 17mm Stem, Natural Nylon, 25 Pcs.","Mitsubishi # MB-098145, Nissan # 01281-00023, Toyota # 90189-06001"
+        Mitsubishi,13248PK,Nuts Nylon,"Bumper Cover Grommet, 33/64"" Hole, 21mm Stem, Black Nylon, 10 Pcs.",Mitsubishi # MB271999
+        Mitsubishi,9901PK,Clips Retaining,"Retaining Clips, 5/16"" Hole, 15mm Stem, Black Nylon, 25 Pcs.",Mitsubishi # HB-121467
+        Mitsubishi,15031PK,Retainers Hood Insulation,"Hood Insulator Retainers, 5/16"" Hole, 8mm Stem, Gray Nylon, 10 Pcs.",Mitsubishi # MB020923
+        Mitsubishi,15030PK,Retainers Hood Insulation,"Hood Insulator Retainers, 25/64"" Hole, 8mm Stem, Black Nylon, 15 Pcs.",Mitsubishi # MU481187
+        Mitsubishi,9216PK,Retainers Weatherstrip,"Hood Weatherstrip Retainers, 9/32"" Hole, 6mm Stem, Brown Nylon, 25 Pcs.",Mitsubishi # MU481027
+        Mitsubishi,9650PK,Retainers Push Type,"Push Type Retainers, 15/64"" Hole, 11mm Stem, Black Nylon, 10 Pcs.","Mitsubishi # MR288150, Subaru # 909130013"
+        Mitsubishi,10797PK,Retainers Push Type,"Interior Trim Bumper & Grille Retainers, 1/4"" Hole, 12mm Stem, Black Nylon, 25 Pcs.",Mitsubishi # MB619582
+        Mitsubishi,18807PK,Retainers Push Type,"Fender Apron Push Retainers, 5/16"" Hole, 11mm Stem, Black Nylon With Sealer, 25 Pcs.",Mitsubishi # MU488006
+        Mitsubishi,9943PK,Retainers Push Type,"Fender & Bumper Push Type Retainers, 23/64"" Hole, 13mm Stem, Black Nylon, 10 Pcs.",Mitsubishi # MR200300
+        Mitsubishi,12408PK,Retainers Phillips Screw,"Front & Rear Bumper Phillips Screw Retainers, 9/32"" Hole, 10mm Stem, Black Nylon, 10 Pcs.","Mitsubishi # MB-253964, MB887567"
+        Mitsubishi,16338PK,Retainers Push Type,"Bumper & Apron Push Type Retainers, 5/16"" Hole, 20mm Stem, Black Nylon, 25 Pcs.","Chrysler # MU001220, Mitsubishi # MU000695"
+        Mitsubishi,10538PK,Retainers Phillips Screw,"Front Bumper Fascia Phillips Screw Retainers, 5/16"" Hole, 20mm Stem, Black Nylon, 15 Pcs.","Mitsubishi # MB547806, Nissan # 63854-01A00"
+        Mitsubishi,10409PK,Retainers Phillips Screw,"Front Bumper Phillips Screw Retainers, 5/16"" Hole, 26mm Stem, Black Nylon, 75 Pcs.",Mitsubishi # MR-138810
+        Mitsubishi,11985PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 9/32"" Hole, 14mm Stem, White Nylon, 10 Pcs.",Mitsubishi # MB846992
+        Mitsubishi,11366PK,Retainers Door Trim Panel,"Door Trim Panel Retainers, 23/64"" Hole, 15mm Stem, Yellow Nylon, 15 Pcs.","G.M. # 95008221, Mitsubishi # MB608104, Toyota # 67771-30090"
+        Mitsubishi,18111PK,Retainers Moulding,"Moulding Retainers, 9/32"" Hole, 10mm Stem, White Nylon, 25 Pcs.",Mitsubishi # MU000573
+        Mitsubishi,12856PK,Retainers Moulding,"Moulding Trim Retainers, 19/64"" Hole, 11mm Stem, White Nylon With Sealer, 15 Pcs.",Mitsubishi # MB696120`;
+
+        // ────────────────────────────────────────────────────────────────
+        // 2.  CSV PARSER  (handles quoted fields with commas)
+        // ────────────────────────────────────────────────────────────────
+        function parseCSV(text) {
+            const lines = [];
+            let current = '';
+            let inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const ch = text[i];
+                if (inQuotes) {
+                    if (ch === '"' && text[i + 1] === '"') {
+                        current += '"';
+                        i++;
+                    } else if (ch === '"') {
+                        inQuotes = false;
+                    } else {
+                        current += ch;
+                    }
+                } else {
+                    if (ch === '"') {
+                        inQuotes = true;
+                    } else if (ch === '\n') {
+                        if (current.trim() !== '') lines.push(current);
+                        current = '';
+                    } else {
+                        current += ch;
+                    }
+                }
+            }
+            if (current.trim() !== '') lines.push(current);
+
+            if (lines.length === 0) return [];
+
+            const headers = lines[0].split(',').map(h => h.trim());
+            const result = [];
+            for (let r = 1; r < lines.length; r++) {
+                const values = [];
+                let field = '';
+                let inQ = false;
+                const row = lines[r];
+                for (let i = 0; i < row.length; i++) {
+                    const ch = row[i];
+                    if (inQ) {
+                        if (ch === '"' && row[i + 1] === '"') {
+                            field += '"';
+                            i++;
+                        } else if (ch === '"') {
+                            inQ = false;
+                        } else {
+                            field += ch;
+                        }
+                    } else {
+                        if (ch === '"') {
+                            inQ = true;
+                        } else if (ch === ',') {
+                            values.push(field.trim());
+                            field = '';
+                        } else {
+                            field += ch;
+                        }
+                    }
+                }
+                values.push(field.trim());
+                if (values.length === headers.length) {
+                    const obj = {};
+                    headers.forEach((h, idx) => { obj[h] = values[idx] || ''; });
+                    result.push(obj);
+                }
+            }
+            return result;
+        }
+
+        // ────────────────────────────────────────────────────────────────
+        // 3.  DATA & STATE
+        // ────────────────────────────────────────────────────────────────
+        const allData = parseCSV(CSV_DATA);
+        const PAGE_SIZE = 25;
+
+        let filtered = [...allData];
+        let currentPage = 1;
+        let sortKey = 'Brand';
+        let sortAsc = true;
+
+        // DOM refs
+        const tbody = document.getElementById('tableBody');
+        const searchInput = document.getElementById('searchInput');
+        const brandFilter = document.getElementById('brandFilter');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const resultStats = document.getElementById('resultStats');
+        const paginationInfo = document.getElementById('paginationInfo');
+        const paginationButtons = document.getElementById('paginationButtons');
+        const totalCountEl = document.getElementById('totalCount');
+        const brandCountEl = document.getElementById('brandCount');
+
+        // ────────────────────────────────────────────────────────────────
+        // 4.  RENDER
+        // ────────────────────────────────────────────────────────────────
+        function render() {
+            // apply filters
+            const search = searchInput.value.toLowerCase().trim();
+            const brand = brandFilter.value;
+            const category = categoryFilter.value;
+
+            filtered = allData.filter(row => {
+                const matchSearch = !search ||
+                    row['Brand'].toLowerCase().includes(search) ||
+                    row['Part Number'].toLowerCase().includes(search) ||
+                    row['Description'].toLowerCase().includes(search) ||
+                    row['OEM Numbers'].toLowerCase().includes(search);
+                const matchBrand = !brand || row['Brand'] === brand;
+                const matchCategory = !category || row['Category'] === category;
+                return matchSearch && matchBrand && matchCategory;
+            });
+
+            // sort
+            filtered.sort((a, b) => {
+                const va = (a[sortKey] || '').toLowerCase();
+                const vb = (b[sortKey] || '').toLowerCase();
+                if (va < vb) return sortAsc ? -1 : 1;
+                if (va > vb) return sortAsc ? 1 : -1;
+                return 0;
+            });
+
+            const total = filtered.length;
+            const totalPages = Math.ceil(total / PAGE_SIZE) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+            if (currentPage < 1) currentPage = 1;
+
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const end = Math.min(start + PAGE_SIZE, total);
+            const pageData = filtered.slice(start, end);
+
+            // stats
+            resultStats.innerHTML = `<strong>${total}</strong> results`;
+            document.getElementById('totalCount').textContent = allData.length;
+            const uniqueBrands = new Set(allData.map(r => r['Brand']));
+            brandCountEl.textContent = uniqueBrands.size;
+
+            // table body
+            if (pageData.length === 0) {
+                tbody.innerHTML = `
+                    <tr><td colspan="5">
+                        <div class="no-results">
+                            <span class="emoji">🔍</span>
+                            No parts found matching your criteria.
+                        </div>
+                    </td></tr>`;
+            } else {
+                tbody.innerHTML = pageData.map(row => `
+                    <tr>
+                        <td><span class="brand-tag">${escHtml(row['Brand'])}</span></td>
+                        <td><span class="part-num">${escHtml(row['Part Number'])}</span></td>
+                        <td><span class="category">${escHtml(row['Category'])}</span></td>
+                        <td class="desc">${escHtml(row['Description'])}</td>
+                        <td class="oem">${escHtml(row['OEM Numbers'])}</td>
+                    </tr>
+                `).join('');
+            }
+
+            // pagination info
+            paginationInfo.innerHTML =
+                `Showing <strong>${total === 0 ? 0 : start + 1}</strong> – <strong>${end}</strong> of <strong>${total}</strong>`;
+
+            // pagination buttons
+            let btnHtml = '';
+            const maxBtns = 7;
+            let startPage = Math.max(1, currentPage - Math.floor(maxBtns / 2));
+            let endPage = Math.min(totalPages, startPage + maxBtns - 1);
+            if (endPage - startPage < maxBtns - 1) {
+                startPage = Math.max(1, endPage - maxBtns + 1);
+            }
+
+            if (currentPage > 1) {
+                btnHtml += `<button data-page="${currentPage - 1}">◀</button>`;
+            }
+            for (let p = startPage; p <= endPage; p++) {
+                btnHtml += `<button data-page="${p}" class="${p === currentPage ? 'active' : ''}">${p}</button>`;
+            }
+            if (currentPage < totalPages) {
+                btnHtml += `<button data-page="${currentPage + 1}">▶</button>`;
+            }
+            paginationButtons.innerHTML = btnHtml;
+
+            // attach click events to pagination buttons
+            paginationButtons.querySelectorAll('button[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const page = parseInt(btn.dataset.page, 10);
+                    if (page >= 1 && page <= totalPages) {
+                        currentPage = page;
+                        render();
+                    }
+                });
+            });
+
+            // update sort arrows
+            document.querySelectorAll('thead th[data-sort]').forEach(th => {
+                th.classList.toggle('active', th.dataset.sort === sortKey);
+            });
+        }
+
+        // ────────────────────────────────────────────────────────────────
+        // 5.  HELPERS
+        // ────────────────────────────────────────────────────────────────
+        function escHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ────────────────────────────────────────────────────────────────
+        // 6.  POPULATE FILTERS
+        // ────────────────────────────────────────────────────────────────
+        function populateFilters() {
+            const brands = [...new Set(allData.map(r => r['Brand']))].sort();
+            const categories = [...new Set(allData.map(r => r['Category']))].sort();
+
+            brandFilter.innerHTML = `<option value="">All Brands</option>` +
+                brands.map(b => `<option value="${b}">${b}</option>`).join('');
+
+            categoryFilter.innerHTML = `<option value="">All Categories</option>` +
+                categories.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        // ────────────────────────────────────────────────────────────────
+        // 7.  EVENTS
+        // ────────────────────────────────────────────────────────────────
+        searchInput.addEventListener('input', () => { currentPage = 1;
+            render(); });
+        brandFilter.addEventListener('change', () => { currentPage = 1;
+            render(); });
+        categoryFilter.addEventListener('change', () => { currentPage = 1;
+            render(); });
+
+        document.querySelectorAll('thead th[data-sort]').forEach(th => {
+            th.addEventListener('click', () => {
+                const key = th.dataset.sort;
+                if (sortKey === key) {
+                    sortAsc = !sortAsc;
+                } else {
+                    sortKey = key;
+                    sortAsc = true;
+                }
+                currentPage = 1;
+                render();
+            });
+        });
+
+        // ────────────────────────────────────────────────────────────────
+        // 8.  INIT
+        // ────────────────────────────────────────────────────────────────
+        populateFilters();
+        render();
+    </script>
+
+</body>
+</html>
