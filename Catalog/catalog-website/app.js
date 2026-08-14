@@ -319,10 +319,13 @@ function renderTable() {
   const maxRows = 2000; // safety for very large sections
   const slice = filteredRows.slice(0, maxRows);
 
+  // Store ordered headers for copy formatting
+  window._tableOrderedHeaders = ordered;
+
   tableBody.innerHTML = slice
-    .map((row) => {
+    .map((row, idx) => {
       return (
-        "<tr>" +
+        `<tr class="clickable-row" data-idx="${idx}" title="Click to copy row data">` +
         ordered
           .map((h) => {
             const val = row[h] || "";
@@ -337,9 +340,77 @@ function renderTable() {
     })
     .join("");
 
+  // Click-to-copy handlers
+  tableBody.querySelectorAll("tr.clickable-row").forEach((tr) => {
+    tr.addEventListener("click", () => {
+      const idx = parseInt(tr.dataset.idx, 10);
+      const row = slice[idx];
+      if (!row) return;
+      copyRowToClipboard(row, ordered);
+      // Visual feedback
+      tr.classList.add("copied");
+      setTimeout(() => tr.classList.remove("copied"), 600);
+    });
+  });
+
   if (filteredRows.length > maxRows) {
     tableBody.innerHTML += `<tr><td colspan="${ordered.length}" style="text-align:center;color:var(--text-muted);padding:16px">Showing first ${maxRows.toLocaleString()} of ${filteredRows.length.toLocaleString()} rows. Use search to narrow results.</td></tr>`;
   }
+}
+
+function copyRowToClipboard(row, orderedHeaders) {
+  // Format as labeled lines (easy to read when pasted)
+  const lines = orderedHeaders
+    .map((h) => {
+      const val = (row[h] || "").toString().trim();
+      return val ? `${h}: ${val}` : null;
+    })
+    .filter(Boolean);
+
+  // Also include a tab-separated single line for spreadsheet paste
+  const tsv = orderedHeaders.map((h) => (row[h] || "").toString().replace(/\t/g, " ")).join("\t");
+
+  const text = lines.join("\n") + "\n\n" + tsv;
+
+  const showToast = (msg, ok) => {
+    let toast = document.getElementById("copyToast");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.id = "copyToast";
+      toast.className = "copy-toast";
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.classList.toggle("error", !ok);
+    toast.classList.add("show");
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => toast.classList.remove("show"), 2000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(
+      () => showToast("Row copied to clipboard", true),
+      () => fallbackCopy(text, showToast)
+    );
+  } else {
+    fallbackCopy(text, showToast);
+  }
+}
+
+function fallbackCopy(text, showToast) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.left = "-9999px";
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    showToast("Row copied to clipboard", true);
+  } catch (e) {
+    showToast("Could not copy — try selecting manually", false);
+  }
+  document.body.removeChild(ta);
 }
 
 function applyFilter(q) {
