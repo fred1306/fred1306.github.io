@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disco Automotive Hardware Catalog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">D</div>
+        <div class="brand-text">
+          <strong>Disco</strong>
+          <span>Automotive Hardware</span>
+        </div>
+      </div>
+
+      <div class="sidebar-search">
+        <input type="search" id="navSearch" placeholder="Filter sections…" autocomplete="off" />
+      </div>
+
+      <nav class="nav" id="nav">
+        <!-- Populated by JS -->
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="stat" id="totalStat">— products</div>
+        <div class="hint">Open a section to browse</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+        <div class="topbar-title" id="pageTitle">Catalog Overview</div>
+        <div class="topbar-actions">
+          <input type="search" id="tableSearch" placeholder="Search products in this section…" disabled />
+        </div>
+      </header>
+
+      <div class="content" id="content">
+        <!-- Home view -->
+        <section class="home" id="homeView">
+          <div class="hero">
+            <h1>Product Catalog</h1>
+            <p>Browse extracted product data from the Disco Automotive Hardware catalog. Select a section on the left to view parts, sizes, finishes, and OEM cross-references.</p>
+            <div class="hero-stats" id="heroStats">
+              <!-- filled by JS -->
+            </div>
+          </div>
+
+          <div class="category-grid" id="categoryGrid">
+            <!-- filled by JS -->
+          </div>
+        </section>
+
+        <!-- Table view -->
+        <section class="table-view hidden" id="tableView">
+          <div class="table-meta">
+            <div class="table-info">
+              <span id="rowCount">0</span> products
+              <span class="sep">·</span>
+              <span id="filterCount"></span>
+            </div>
+            <div class="table-tools">
+              <button class="btn ghost" id="exportBtn" title="Download current table as CSV">Export CSV</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table id="productTable">
+              <thead id="tableHead"></thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+          <div class="empty hidden" id="emptyState">No matching products.</div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
